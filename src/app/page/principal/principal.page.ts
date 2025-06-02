@@ -5,6 +5,7 @@ import { IonButton, IonButtons, IonCol, IonGrid, IonContent, IonText, IonHeader,
 import { addIcons } from 'ionicons';
 import { chevronForwardOutline, cloudOutline, earthOutline, gridOutline, laptopOutline, logoDribbble, menuOutline, scanOutline, searchOutline, walletOutline } from 'ionicons/icons';
 import { CabecalhoComponent } from 'src/app/component/cabecalho/cabecalho.component';
+import { CategoriaComponent } from 'src/app/component/categoria/categoria.component';
 
 @Component({
   selector: 'app-principal',
@@ -13,7 +14,7 @@ import { CabecalhoComponent } from 'src/app/component/cabecalho/cabecalho.compon
   standalone: true,
   imports: [
     IonContent, IonHeader, IonToolbar, CommonModule, FormsModule, IonGrid, IonText,
-    IonButtons, IonButton, IonIcon, IonItem, IonLabel, IonRow, IonCol, CabecalhoComponent
+    IonButtons, IonButton, IonIcon, IonItem, IonLabel, IonRow, IonCol, CabecalhoComponent, CategoriaComponent
   ]
 })
 export class PrincipalPage implements OnInit {

@@ -29,28 +29,7 @@
 
   <app-cabecalho label="My Data"></app-cabecalho>
 
-  <section id="bloco-categorias">
-
-    <ion-grid>
-      <ion-row>
-        <ion-col size="6" size-md="6" size-lg="12" *ngFor="let item of categoriaModelList">
-          <div class="card">
-            <div class="card-header">
-              <ion-icon [name]="item.icon"></ion-icon>
-            </div>
-            <div class="card-content">
-              <ion-text>{{ item.title }}</ion-text>
-            </div>
-            <div class="card-footer">
-              <ion-text>{{ item.count }} passwords</ion-text>
-              <ion-icon name="chevron-forward-outline"></ion-icon>
-            </div>
-          </div>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-
-  </section>
+  <app-categoria [categoriaModelList]="categoriaModelList"></app-categoria>
 
   <app-cabecalho label="Recently Added"></app-cabecalho>
 

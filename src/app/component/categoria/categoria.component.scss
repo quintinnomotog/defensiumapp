@@ -1,0 +1,33 @@
+ion-grid {
+    --gap: 1rem;
+
+    ion-row {
+        ion-col {
+
+            .card {
+                background: #161a29;
+                border-radius: 1rem;
+                padding: 1rem;
+
+                // border: red dashed 1px;
+                .card-header {
+                    font-size: 1.6rem;
+                }
+
+                .card-content {
+                    font-size: 1rem;
+                    margin-top: 0.4rem;
+                    margin-bottom: 0.4rem;
+                }
+
+                .card-footer {
+                    color: #8f979f;
+                    font-size: 0.8rem;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                }
+            }
+        }
+    }
+}
