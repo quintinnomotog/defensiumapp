@@ -1,0 +1,16 @@
+<ion-item lines="none" *ngFor="let item of senhaModelList">
+  <ion-col size="2">
+    <div class="icon">
+      <ion-icon [name]="item.icon" [style.color]="item.color"></ion-icon>
+    </div>
+  </ion-col>
+  <ion-col size="8">
+    <ion-label>
+      {{ item.title }}
+      <p>{{ item.email }}</p>
+    </ion-label>
+  </ion-col>
+  <ion-col size="2">
+    <ion-label>{{ item.lastUsed }}</ion-label>
+  </ion-col>
+</ion-item>

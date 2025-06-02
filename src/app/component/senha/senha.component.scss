@@ -1,0 +1,27 @@
+ion-item {
+    margin-top: 1rem;
+    --background: var(--ion-color-primary);
+
+    ion-col {
+
+        .icon {
+            font-size: 1.7rem;
+            background: #161a29;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+    }
+
+    ion-col:nth-child(2) {
+        font-size: 1rem;
+    }
+
+    ion-col:nth-child(3) {
+        font-size: 0.6rem;
+        color: #7d848e;
+    }
+}
