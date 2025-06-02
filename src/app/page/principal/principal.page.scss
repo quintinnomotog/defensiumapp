@@ -1,6 +1,7 @@
 ion-header {
     ion-toolbar {
-        --background: var(--ion-color-primary);
+        --background: transparent;
+        backdrop-filter: blur(10px);
     }
 }
 

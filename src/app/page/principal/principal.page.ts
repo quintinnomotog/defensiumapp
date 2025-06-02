@@ -62,6 +62,76 @@ export class PrincipalPage implements OnInit {
       title: 'GitHub',
       email: 'quintino.gh@example.com',
       lastUsed: '1 Week'
+    },
+    {
+      icon: 'logo-dribbble',
+      color: '#EA4C89',
+      title: 'Dribbble',
+      email: 'josequintino@hotmail.com.br',
+      lastUsed: '11 Minutes'
+    },
+    {
+      icon: 'logo-facebook',
+      color: '#1877F2',
+      title: 'Facebook',
+      email: 'quintino.fb@example.com',
+      lastUsed: '2 Hours'
+    },
+    {
+      icon: 'logo-instagram',
+      color: '#E1306C',
+      title: 'Instagram',
+      email: 'quintino.insta@example.com',
+      lastUsed: 'Yesterday'
+    },
+    {
+      icon: 'logo-twitter',
+      color: '#1DA1F2',
+      title: 'Twitter',
+      email: 'quintino.tw@example.com',
+      lastUsed: '3 Days'
+    },
+    {
+      icon: 'logo-github',
+      color: '#1877F2',
+      title: 'GitHub',
+      email: 'quintino.gh@example.com',
+      lastUsed: '1 Week'
+    },
+    {
+      icon: 'logo-dribbble',
+      color: '#EA4C89',
+      title: 'Dribbble',
+      email: 'josequintino@hotmail.com.br',
+      lastUsed: '11 Minutes'
+    },
+    {
+      icon: 'logo-facebook',
+      color: '#1877F2',
+      title: 'Facebook',
+      email: 'quintino.fb@example.com',
+      lastUsed: '2 Hours'
+    },
+    {
+      icon: 'logo-instagram',
+      color: '#E1306C',
+      title: 'Instagram',
+      email: 'quintino.insta@example.com',
+      lastUsed: 'Yesterday'
+    },
+    {
+      icon: 'logo-twitter',
+      color: '#1DA1F2',
+      title: 'Twitter',
+      email: 'quintino.tw@example.com',
+      lastUsed: '3 Days'
+    },
+    {
+      icon: 'logo-github',
+      color: '#1877F2',
+      title: 'GitHub',
+      email: 'quintino.gh@example.com',
+      lastUsed: '1 Week'
     }
   ];
 
