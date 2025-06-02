@@ -1,0 +1,10 @@
+ion-tabs {
+    ion-tab-bar {
+        --background: var(--ion-color-primary);
+        ion-tab-button {
+            ion-icon, ion-label {
+                color: white;
+            }
+        }
+    }
+}
