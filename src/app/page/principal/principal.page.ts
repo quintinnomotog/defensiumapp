@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { IonButton, IonButtons, IonCol, IonContent, IonHeader, IonIcon, IonItem, IonLabel, IonRow, IonToolbar } from '@ionic/angular/standalone';
+import { IonButton, IonButtons, IonCol, IonGrid, IonContent, IonText, IonHeader, IonIcon, IonItem, IonLabel, IonRow, IonToolbar } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { chevronForwardOutline, cloudOutline, earthOutline, gridOutline, laptopOutline, logoDribbble, menuOutline, scanOutline, searchOutline, walletOutline } from 'ionicons/icons';
 import { CabecalhoComponent } from 'src/app/component/cabecalho/cabecalho.component';
@@ -12,7 +12,7 @@ import { CabecalhoComponent } from 'src/app/component/cabecalho/cabecalho.compon
   styleUrls: ['./principal.page.scss'],
   standalone: true,
   imports: [
-    IonContent, IonHeader, IonToolbar, CommonModule, FormsModule,
+    IonContent, IonHeader, IonToolbar, CommonModule, FormsModule, IonGrid, IonText,
     IonButtons, IonButton, IonIcon, IonItem, IonLabel, IonRow, IonCol, CabecalhoComponent
   ]
 })

@@ -20,40 +20,75 @@ ion-item {
     }
 
     #bloco-categorias {
-        .row {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
+        ion-grid {
+            --gap: 1rem;
 
-            .principal {
-                background: #161a29;
-                border-radius: 1rem;
-                width: 100%;
-                margin: 0.2rem;
-                padding: 0.7rem;
+            ion-row {
+                ion-col {
 
-                .header {
-                    font-size: 1.6rem;
-                }
+                    .card {
+                        background: #161a29;
+                        border-radius: 1rem;
+                        padding: 1rem;
+                        // border: red dashed 1px;
+                        .card-header {
+                            font-size: 1.6rem;
+                        }
 
-                .content {
-                    margin-top: 0.4rem;
-                    font-size: 0.8rem;
-                    font-weight: bold;
-                }
+                        .card-content {
+                            font-size: 0.8rem;
+                            margin-top: 0.4rem;
+                            margin-bottom: 0.4rem;
+                        }
 
-                .footer {
-                    margin-top: 0.6rem;
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                    font-size: 0.7rem;
-                    color: #8f979f;
+                        .card-footer {
+                            color: #8f979f;
+                            font-size: 0.7rem;
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                        }
+                    }
                 }
             }
         }
     }
+
+    // #bloco-categorias {
+    //     .row {
+    //         display: flex;
+    //         align-items: center;
+    //         justify-content: center;
+    //         width: 100%;
+
+    //         .principal {
+    //             background: #161a29;
+    //             border-radius: 1rem;
+    //             width: 100%;
+    //             margin: 0.2rem;
+    //             padding: 0.7rem;
+
+    //             .header {
+    //                 font-size: 1.6rem;
+    //             }
+
+    //             .content {
+    //                 margin-top: 0.4rem;
+    //                 font-size: 0.8rem;
+    //                 font-weight: bold;
+    //             }
+
+    //             .footer {
+    //                 margin-top: 0.6rem;
+    //                 display: flex;
+    //                 align-items: center;
+    //                 justify-content: space-between;
+    //                 font-size: 0.7rem;
+    //                 color: #8f979f;
+    //             }
+    //         }
+    //     }
+    // }
 
     ion-item {
         margin-top: 1rem;
@@ -79,7 +114,6 @@ ion-item {
         ion-col:nth-child(3) {
             font-size: 0.6rem;
             color: #7d848e;
-            // border: red dashed 1px;
         }
     }
 }
