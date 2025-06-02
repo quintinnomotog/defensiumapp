@@ -15,7 +15,6 @@ ion-item {
         ion-col {
             font-size: 2rem;
             font-weight: bold;
-            //border: red dashed 1px;
             margin: auto;
         }
     }
@@ -78,8 +77,9 @@ ion-item {
         }
 
         ion-col:nth-child(3) {
-            font-size: 0.7rem;
+            font-size: 0.6rem;
             color: #7d848e;
+            // border: red dashed 1px;
         }
     }
 }
