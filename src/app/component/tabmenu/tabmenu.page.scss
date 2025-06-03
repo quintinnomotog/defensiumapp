@@ -1,9 +1,15 @@
 ion-tabs {
     ion-tab-bar {
-        --background: var(--ion-color-primary);
+        --background: rgba(2, 7, 23, 0.6);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        --border: none;
+        --box-shadow: none;
+
         ion-tab-button {
-            ion-icon, ion-label {
-                color: white;
+            ion-icon,
+            ion-label {
+                color: #eaebec;
             }
         }
     }
