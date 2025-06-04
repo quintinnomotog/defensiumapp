@@ -56,7 +56,6 @@ ion-content {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                // border: dashed 2px red;
 
                 ion-col:nth-child(1) {
                     display: flex;
@@ -74,7 +73,8 @@ ion-content {
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    font-size: 1.2rem;
+                    font-size: 2rem;
+                    border: dashed 2px red;
                 }
             }
         }

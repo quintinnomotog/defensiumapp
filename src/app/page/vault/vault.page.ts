@@ -53,14 +53,14 @@ export class VaultPage implements OnInit {
 
   public async copiarSenhaClipboard(senha: any) {
     await navigator.clipboard.writeText(senha);
-    this.showToast(senha);
+    this.showToast();
   }
 
-  private async showToast(senha: any) {
+  private async showToast() {
     const toast = await this.toastController.create({
-      message: `Senha (${senha}) copiada com Sucesso!`,
+      message: `Senha copiada com Sucesso!`,
       duration: 3000,
-      position: 'top',
+      position: 'bottom',
       color: 'secondary'
     });
     await toast.present();
