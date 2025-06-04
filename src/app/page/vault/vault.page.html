@@ -1,0 +1,49 @@
+<ion-header [translucent]="true" class="ion-no-border">
+
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabmenu/principal"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <div class="vault-search">
+    <ion-label>Vault</ion-label>
+    <div class="searchbar">
+      <ion-icon slot="start" name="search-outline"></ion-icon>
+      <span>Search</span>
+    </div>
+  </div>
+
+</ion-header>
+
+<ion-content>
+
+  <app-cabecalho label="Browser" [showcomplemento]="true"></app-cabecalho>
+
+  <section id="senha-container">
+
+    @for (senhaModel of senhaModelList; track $index) {
+      <ion-item lines="none">
+        <ion-row>
+          <ion-col size="2">
+            <div class="icon">
+              <ion-icon slot="start" [name]="senhaModel.icon"></ion-icon>
+            </div>
+          </ion-col>
+          <ion-col size="9">
+            <ion-label>
+              {{ senhaModel.title }}
+            </ion-label>
+          </ion-col>
+          <ion-col size="1">
+            <ion-button>
+              <ion-icon name="copy-outline"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+    }
+
+  </section>
+
+</ion-content>

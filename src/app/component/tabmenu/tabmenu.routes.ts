@@ -13,6 +13,10 @@ export const tabmenuRoutes: Routes = [
       {
         path: 'configuracao',
         loadComponent: () => import('../../page/configuracao/configuracao.page').then(m => m.ConfiguracaoPage)
+      },
+      {
+        path: 'vault',
+        loadComponent: () => import('../../page/vault/vault.page').then(m => m.VaultPage)
       }
     ]
   },
