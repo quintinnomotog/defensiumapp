@@ -1,0 +1,30 @@
+ion-header {
+  background: var(--ion-color-primary);
+
+  ion-toolbar {
+    --background: var(--ion-color-primary);
+
+    ion-title {
+      font-weight: bold;
+    }
+  }
+}
+
+ion-content {
+  --background: var(--ion-color-primary);
+
+  form {
+    ion-item {
+      --background: var(--ion-color-primary);
+      display: flex;
+      flex-direction: column;
+
+      // justify-content: center;
+      // align-items: center;
+      ion-select {
+        --color: var(--ion-color-light);
+        // border: red dashed 2px;
+      }
+    }
+  }
+}

@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonIcon, IonFab, IonFabButton, IonLabel, IonTab, IonTabBar, IonTabButton, IonTabs, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { ModalController, IonContent, IonHeader, IonIcon, IonFab, IonFabButton, IonLabel, IonTab, IonTabBar, IonTabButton, IonTabs, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { SenhaCadastrarPage } from 'src/app/page/senha/senha-cadastrar/senha-cadastrar.page';
 
 @Component({
   selector: 'app-tabmenu',
@@ -12,9 +13,17 @@ import { IonContent, IonHeader, IonIcon, IonFab, IonFabButton, IonLabel, IonTab,
 })
 export class TabmenuPage implements OnInit {
 
+  private modalController = inject(ModalController);
+
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit() { }
+
+  public async cadastrarSenha() {
+    const createModalController = await this.modalController.create({
+      component: SenhaCadastrarPage
+    });
+    return await createModalController.present();
   }
 
 }

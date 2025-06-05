@@ -1,5 +1,5 @@
 ionic serve --no-open &
 
-sleep 5
+sleep 10
 
 chromium --app=http://localhost:8100

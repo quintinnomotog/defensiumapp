@@ -25,3 +25,14 @@ ion-content::part(scroll) {
 ion-content::part(scroll)::-webkit-scrollbar {
     display: none;
 }
+
+.alert-wrapper.sc-ion-alert-md,
+.alert-wrapper.sc-ion-alert-ios {
+  --background: #161a29;
+}
+
+.alert-button.sc-ion-alert-md,
+.alert-button.sc-ion-alert-ios {
+  color: white;
+}
+

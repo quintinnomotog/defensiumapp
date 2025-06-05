@@ -1,0 +1,31 @@
+#formulario-input {
+  position: relative;
+  height: 50px;
+  // border: dashed 1px red;
+  background: var(--ion-color-secondary);
+
+  ion-label {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    padding: 0 0.25rem;
+    color: var(--font-color-silver-primary);
+    font-size: 1rem;
+    transition: 0.3s;
+  }
+
+  input {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: none;
+    outline: none;
+    border: solid 1px var(--ion-color-medium-tint);
+    font-size: 16px;
+    font-weight: bold;
+    padding-left: 1rem;
+    border-radius: 10px;
+    color: aqua;
+  }
+}
