@@ -1,4 +1,4 @@
 <section id="formulario-input">
   <ion-label [class.foco-input]="isFoco">{{label}}</ion-label>
-  <input [type]="type" (focus)="isFoco = true" (blur)="onHabilitarFoco($event)"/>
+  <input [type]="type" (focus)="onFoco()" (blur)="onHabilitarFoco($event)"/>
 </section>
