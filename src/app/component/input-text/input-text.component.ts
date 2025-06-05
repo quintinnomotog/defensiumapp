@@ -15,8 +15,14 @@ export class InputTextComponent  implements OnInit {
   @Input()
   public label: string = "";
 
+  public isFoco: boolean = false;
+
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() { }
+
+  public onHabilitarFoco(event: any) {
+    return !event.target.value ? this.isFoco = false : true;
+  }
 
 }

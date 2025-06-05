@@ -1,8 +1,9 @@
 #formulario-input {
   position: relative;
   height: 50px;
-  // border: dashed 1px red;
   background: var(--ion-color-secondary);
+  // border: dashed 1px red;
+  border-radius: 1rem;
 
   ion-label {
     position: absolute;
@@ -15,17 +16,30 @@
   }
 
   input {
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background: none;
     outline: none;
-    border: solid 1px var(--ion-color-medium-tint);
+    border: solid 1px var(--ion-color-secondary);
     font-size: 16px;
     font-weight: bold;
     padding-left: 1rem;
-    border-radius: 10px;
-    color: aqua;
+    border-radius: 1rem;
+    color: rgb(11, 155, 221);
   }
+
+  .foco-input {
+    top: -0.8rem;
+    left: 0.8rem;
+    font-size: 14px;
+    font-weight: 600;
+    background-color: var(--ion-color-secondary);
+    border-radius: 10px;
+    padding: 0.2rem;
+    z-index: 10;
+  }
+
 }
