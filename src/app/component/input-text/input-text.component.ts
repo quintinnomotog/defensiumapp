@@ -21,7 +21,7 @@ export class InputTextComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   public onFoco() {
     if (this.animacao) {
@@ -33,7 +33,6 @@ export class InputTextComponent implements OnInit {
     if (!this.animacao) {
       return;
     }
-
     if (!event.target.value) {
       this.isFoco = false;
     }
