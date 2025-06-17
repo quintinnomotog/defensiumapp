@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { IonSearchbar, IonText, IonAvatar, IonButton, IonContent, IonHeader, IonTitle, IonToolbar, ToastController } from '@ionic/angular/standalone';
 
@@ -8,7 +8,8 @@ import { IonSearchbar, IonText, IonAvatar, IonButton, IonContent, IonHeader, Ion
   templateUrl: './principal.page.html',
   styleUrls: ['./principal.page.scss'],
   standalone: true,
-  imports: [IonSearchbar, IonText, IonAvatar, IonButton, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
+  imports: [IonSearchbar, IonText, IonAvatar, IonButton, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class PrincipalPage implements OnInit {
 
