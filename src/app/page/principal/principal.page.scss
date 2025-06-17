@@ -34,13 +34,38 @@
 #searchbar {
     padding: 1rem;
     .searchbar {
-        background: #526578;
-        border: red dashed 2px;
+        // border: red dashed 2px;
+        display: flex;
+        justify-content: start;
+        align-items: center;
         img {
-
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            // top: 2.3rem;
+            margin-left: 1rem;
         }
         input {
             width: 100%;
+            height: 60px;
+            border-radius: 50px;
+            background: #EEF0F2;
+            color: black;
+            outline: none;
+            border: none;
+            padding-left: 3rem;
         }
+        ::placeholder {
+            color: #526578;
+            font-weight: bold;
+        }
+    }
+}
+
+#cabecalho {
+    padding: 1rem;
+    ion-text {
+        font-size: 1.1rem;
+        font-weight: bold;
     }
 }
