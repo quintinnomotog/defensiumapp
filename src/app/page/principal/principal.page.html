@@ -3,7 +3,7 @@
     <section id="header">
       <div class="box-a">
         <ion-avatar>
-          <img src="assets/images/avatar.png"/>
+          <img src="assets/images/avatar.png" />
         </ion-avatar>
         <ion-text>
           <b>Hello, John</b>
@@ -11,7 +11,7 @@
         </ion-text>
       </div>
       <div class="box-b">
-        <img src="assets/icon/notification.png"/>
+        <img src="assets/icon/notification.png" />
       </div>
     </section>
   </ion-toolbar>
@@ -21,8 +21,8 @@
 
   <section id="searchbar">
     <div class="searchbar">
-      <img src="assets/icon/search.png"/>
-      <input type="text" placeholder="Search Password"/>
+      <img src="assets/icon/search.png" />
+      <input type="text" placeholder="Search Password" />
     </div>
   </section>
 
@@ -33,18 +33,41 @@
   <section id="categoria">
     <swiper-container [slidesPerView]="2.5" [spaceBetween]="20">
       <swiper-slide>
-        <img src="assets/icon/login.png"/>
+        <img src="assets/icon/login.png" />
         <ion-text>Login</ion-text>
       </swiper-slide>
       <swiper-slide>
-        <img src="assets/icon/browser.png"/>
+        <img src="assets/icon/browser.png" />
         <ion-text>Browser</ion-text>
       </swiper-slide>
       <swiper-slide>
-        <img src="assets/icon/cards.png"/>
+        <img src="assets/icon/cards.png" />
         <ion-text>Card</ion-text>
       </swiper-slide>
     </swiper-container>
   </section>
+
+  <section id="cabecalho">
+    <ion-text>Recently Used</ion-text>
+  </section>
+
+  @for(item of credencialList; track item.nome) {
+    <section id="contas-recentes">
+      <div class="box-a column20">
+        <div class="icone">
+          <img [src]="item.imagem" />
+        </div>
+      </div>
+      <div class="box-b column70">
+        <ion-text>
+          <b>{{ item.nome }}</b>
+          <p>{{ item.email }}</p>
+        </ion-text>
+      </div>
+      <div class="box-c column10">
+        <ion-icon name="copy-outline" (click)="copiarSenha()"></ion-icon>
+      </div>
+    </section>
+  }
 
 </ion-content>

@@ -33,10 +33,12 @@
 
 #searchbar {
     padding: 1rem;
+
     .searchbar {
         display: flex;
         justify-content: start;
         align-items: center;
+
         img {
             position: absolute;
             width: 20px;
@@ -44,6 +46,7 @@
             // top: 2.3rem;
             margin-left: 1rem;
         }
+
         input {
             width: 100%;
             height: 60px;
@@ -54,6 +57,7 @@
             border: none;
             padding-left: 3rem;
         }
+
         ::placeholder {
             color: #526578;
             font-weight: bold;
@@ -63,6 +67,7 @@
 
 #cabecalho {
     padding: 1rem;
+
     ion-text {
         font-size: 1.1rem;
         font-weight: bold;
@@ -71,8 +76,8 @@
 
 #categoria {
     padding: 1rem;
+
     swiper-container {
-        // border: red dashed 1px;
         swiper-slide {
             display: flex;
             justify-content: center;
@@ -84,24 +89,70 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+
             img {
                 width: 60px;
                 height: 60px;
             }
+
             ion-text {
                 margin-top: 1rem;
                 font-weight: bold;
                 color: #29333C;
             }
         }
+
         swiper-slide:nth-child(1) {
             background: #EBF1FF;
         }
+
         swiper-slide:nth-child(2) {
             background: #E7F9F2;
         }
+
         swiper-slide:nth-child(3) {
             background: #FDEDF1;
+        }
+    }
+}
+
+#contas-recentes {
+    padding: 1rem;
+    // border: red dashed 1px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .box-a {
+        .icone {
+            background: #F1F5FC;
+            width: 60px;
+            height: 60px;
+            border-radius: 30%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            img {
+                width: 30px;
+                height: 30px;
+            }
+        }
+    }
+
+    .box-b {
+        p {
+            color: #758393;
+            margin-top: 1rem;
+            line-height: 1px;
+        }
+    }
+
+    .box-c {
+        ion-icon {
+            font-size: 2rem;
+            color: #758393;
+            cursor: pointer;
         }
     }
 }
