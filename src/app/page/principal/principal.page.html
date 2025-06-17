@@ -31,10 +31,19 @@
   </section>
 
   <section id="categoria">
-    <swiper-container>
-      <swiper-slide>Login</swiper-slide>
-      <swiper-slide>Browser</swiper-slide>
-      <swiper-slide>Card</swiper-slide>
+    <swiper-container [slidesPerView]="2.5" [spaceBetween]="20">
+      <swiper-slide>
+        <img src="assets/icon/login.png"/>
+        <ion-text>Login</ion-text>
+      </swiper-slide>
+      <swiper-slide>
+        <img src="assets/icon/browser.png"/>
+        <ion-text>Browser</ion-text>
+      </swiper-slide>
+      <swiper-slide>
+        <img src="assets/icon/cards.png"/>
+        <ion-text>Card</ion-text>
+      </swiper-slide>
     </swiper-container>
   </section>
 

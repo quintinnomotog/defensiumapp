@@ -34,7 +34,6 @@
 #searchbar {
     padding: 1rem;
     .searchbar {
-        // border: red dashed 2px;
         display: flex;
         justify-content: start;
         align-items: center;
@@ -67,5 +66,42 @@
     ion-text {
         font-size: 1.1rem;
         font-weight: bold;
+    }
+}
+
+#categoria {
+    padding: 1rem;
+    swiper-container {
+        // border: red dashed 1px;
+        swiper-slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 160px;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            img {
+                width: 60px;
+                height: 60px;
+            }
+            ion-text {
+                margin-top: 1rem;
+                font-weight: bold;
+                color: #29333C;
+            }
+        }
+        swiper-slide:nth-child(1) {
+            background: #EBF1FF;
+        }
+        swiper-slide:nth-child(2) {
+            background: #E7F9F2;
+        }
+        swiper-slide:nth-child(3) {
+            background: #FDEDF1;
+        }
     }
 }
