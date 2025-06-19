@@ -1,13 +1,55 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>credencial-cadastrar</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="ion-padding">
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">credencial-cadastrar</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <section id="searchbar">
+    <div class="searchbar">
+      <img src="assets/icon/search.png" />
+      <input type="text" placeholder="Search for a website or app" />
+    </div>
+  </section>
+
+  <section id="links">
+
+    <ion-button id="modal-secondary">
+      <ion-icon name="add"></ion-icon>
+    </ion-button>
+
+    <swiper-container [slidesPerView]="2.8" [spaceBetween]="10">
+      <swiper-slide>Instagram</swiper-slide>
+      <swiper-slide>Facebook</swiper-slide>
+      <swiper-slide>Dribbble</swiper-slide>
+      <swiper-slide>Github</swiper-slide>
+      <swiper-slide>Google</swiper-slide>
+      <swiper-slide>Microsoft</swiper-slide>
+      <swiper-slide>Amazon</swiper-slide>
+      <swiper-slide>Pinterest</swiper-slide>
+      <swiper-slide>Instagram</swiper-slide>
+      <swiper-slide>Facebook</swiper-slide>
+      <swiper-slide>Dribbble</swiper-slide>
+      <swiper-slide>Github</swiper-slide>
+      <swiper-slide>Google</swiper-slide>
+      <swiper-slide>Microsoft</swiper-slide>
+      <swiper-slide>Amazon</swiper-slide>
+      <swiper-slide>Pinterest</swiper-slide>
+    </swiper-container>
+
+  </section>
+
+  <section id="dividor">
+    <hr/>
+  </section>
+
+  <section id="formulario">
+
+    <form>
+
+      <div class="formulario-input">
+        <ion-label></ion-label>
+        <input type="text"/>
+        <ion-icon></ion-icon>
+      </div>
+
+    </form>
+
+  </section>
+
 </ion-content>

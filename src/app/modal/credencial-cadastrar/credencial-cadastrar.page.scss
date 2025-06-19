@@ -1,0 +1,82 @@
+ion-content {
+
+    #searchbar {
+        margin-top: 1rem;
+        padding: 1rem;
+
+        .searchbar {
+            display: flex;
+            justify-content: start;
+            align-items: center;
+
+            img {
+                position: absolute;
+                width: 20px;
+                height: 20px;
+                margin-left: 1rem;
+            }
+
+            input {
+                width: 100%;
+                height: 60px;
+                border-radius: 50px;
+                background: #EEF0F2;
+                color: black;
+                outline: none;
+                border: none;
+                padding-left: 3rem;
+            }
+
+            ::placeholder {
+                color: #526578;
+                font-weight: bold;
+            }
+        }
+    }
+
+    #links {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 1rem;
+
+        ion-button {
+            --background: #6f6bf5;
+            width: 50px;
+            height: 50px;
+            --border-radius: 12px;
+        }
+
+        swiper-container {
+            width: 100%;
+            margin-left: 0.7rem;
+            cursor: pointer;
+
+            swiper-slide {
+                display: flex;
+                justify-content: center;
+                font-size: 15px;
+                font-weight: bold;
+                border-radius: 16px;
+                align-items: center;
+                width: 100%;
+                height: 50px;
+                background: #eef0f2;
+                color: #57697c;
+            }
+        }
+    }
+
+    #dividor {
+        margin-top: 2rem;
+
+        hr {
+            background: #eef0f2;
+            height: 2px;
+            border-radius: 20px;
+        }
+    }
+
+    #formulario {}
+
+}
