@@ -10,7 +10,7 @@
 @import "@ionic/angular/css/flex-utils.css";
 // @import "@ionic/angular/css/palettes/dark.always.css";
 // @import "@ionic/angular/css/palettes/dark.class.css";
-// @import '@ionic/angular/css/palettes/dark.system.css';
+@import '@ionic/angular/css/palettes/dark.system.css';
 @import url("./theme/fonts.scss");
 
 * {
@@ -20,6 +20,10 @@
 ion-header,
 ion-toolbar {
     box-shadow: none !important;
+}
+
+ion-tab-bar {
+  --border: 0 !important;
 }
 
 // .searchbar-input.sc-ion-searchbar-md {
