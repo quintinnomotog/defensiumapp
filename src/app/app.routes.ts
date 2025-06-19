@@ -7,11 +7,7 @@ export const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'principal',
-    loadComponent: () => import('./page/principal/principal.page').then( m => m.PrincipalPage)
-  },
-  {
     path: 'tabmenu',
-    loadComponent: () => import('./component/tabmenu/tabmenu.page').then( m => m.TabmenuPage)
+    loadChildren: () => import("./component/tabmenu/tabmenu.routes").then(module => module.tabmenuRoutes),
   },
 ];
