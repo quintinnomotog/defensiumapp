@@ -24,6 +24,9 @@ ion-toolbar {
 
 ion-tab-bar {
   --border: 0 !important;
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
+  box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.1);
 }
 
 // .searchbar-input.sc-ion-searchbar-md {
