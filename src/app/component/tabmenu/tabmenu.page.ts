@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { IonModal, IonFab, IonFabButton, IonIcon, IonContent, IonHeader, IonTabBar, IonTabButton, IonTabs, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { ModalController, IonModal, IonFab, IonFabButton, IonIcon, IonContent, IonHeader, IonTabBar, IonTabButton, IonTabs, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { appsOutline, hammerOutline, addCircle, add } from 'ionicons/icons';
+import { CredencialCadastrarPage } from 'src/app/modal/credencial-cadastrar/credencial-cadastrar.page';
 
 @Component({
   selector: 'app-tabmenu',
@@ -14,11 +15,21 @@ import { appsOutline, hammerOutline, addCircle, add } from 'ionicons/icons';
 })
 export class TabmenuPage implements OnInit {
 
+  private modalController = inject(ModalController);
+
   constructor() {
     addIcons({appsOutline,add,hammerOutline,addCircle});
   }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  public async redirecionarModalCredencialCadastrar() {
+    const modalCredencialCadastro = await this.modalController.create({
+      component: CredencialCadastrarPage,
+      initialBreakpoint: 0.89,
+      breakpoints: [0.25, 0.50, 0.95]
+    });
+    return modalCredencialCadastro.present();
   }
 
 }
