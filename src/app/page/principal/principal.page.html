@@ -51,21 +51,24 @@
     <ion-text>Recently Used</ion-text>
   </section>
 
-  @for(item of credencialList; track item.nome) {
+  @for(item of credencialList; track item.descricao) {
     <section id="contas-recentes">
       <div class="box-a column20">
         <div class="icone">
-          <img [src]="item.imagem" />
+          <!-- <img [src]="item.imagem" /> -->
+           <div class="logomarca">
+            <ion-text>{{ getRecuperarNome(item) }}</ion-text>
+           </div>
         </div>
       </div>
       <div class="box-b column70">
         <ion-text>
-          <b>{{ item.nome }}</b>
-          <p>{{ item.email }}</p>
+          <b>{{ item.descricao }}</b>
+          <p>{{ item.identificador }}</p>
         </ion-text>
       </div>
       <div class="box-c column10">
-        <ion-icon name="copy-outline" (click)="copiarSenha()"></ion-icon>
+        <ion-icon name="copy-outline" (click)="copiarSenha(item)"></ion-icon>
       </div>
     </section>
   }
