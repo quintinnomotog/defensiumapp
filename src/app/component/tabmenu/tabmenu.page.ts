@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { IonFab, IonFabButton, IonIcon, IonContent, IonHeader, IonTabBar, IonTabButton, IonTabs, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { IonModal, IonFab, IonFabButton, IonIcon, IonContent, IonHeader, IonTabBar, IonTabButton, IonTabs, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { appsOutline, hammerOutline, addCircle, add } from 'ionicons/icons';
 
@@ -10,7 +10,7 @@ import { appsOutline, hammerOutline, addCircle, add } from 'ionicons/icons';
   templateUrl: './tabmenu.page.html',
   styleUrls: ['./tabmenu.page.scss'],
   standalone: true,
-  imports: [IonFab, IonFabButton, IonIcon, IonTabs, IonTabBar, IonTabButton, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
+  imports: [IonModal, IonFab, IonFabButton, IonIcon, IonTabs, IonTabBar, IonTabButton, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
 })
 export class TabmenuPage implements OnInit {
 

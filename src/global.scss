@@ -53,3 +53,7 @@ ion-tab-bar {
 .column80 {
     flex: 80
 }
+
+ion-toolbar, ion-content {
+    --background: #fafafa;
+}
