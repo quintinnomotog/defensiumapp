@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonButton, IonIcon, IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { personOutline, add } from 'ionicons/icons';
+import { personOutline, add, mailOutline, keyOutline, lockClosedOutline } from 'ionicons/icons';
 
 @Component({
   selector: 'app-credencial-cadastrar',
@@ -16,7 +16,7 @@ import { personOutline, add } from 'ionicons/icons';
 export class CredencialCadastrarPage implements OnInit {
 
   constructor() {
-    addIcons({add,personOutline});
+    addIcons({add,personOutline,mailOutline,lockClosedOutline,keyOutline});
   }
 
   ngOnInit() {
