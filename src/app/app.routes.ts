@@ -3,7 +3,7 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'tabmenu',
+    redirectTo: 'tabmenu/principal',
     pathMatch: 'full',
   },
   {
