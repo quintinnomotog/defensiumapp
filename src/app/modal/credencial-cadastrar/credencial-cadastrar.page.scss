@@ -112,12 +112,17 @@ ion-content {
                 position: absolute;
                 margin-top: 3.4rem;
                 left: 1.1rem;
-                color: #444f60;
+                color: #6d7178;
                 font-size: 1.4rem;
+            }
+            .icone-secundario {
+                position: absolute;
+                // border: dashed 2px red;
+                right: 3.5rem;
+                cursor: pointer;
             }
         }
         ion-button {
-            // border: dashed 2px red;
             width: 80%;
             height: 55px;
             --border-radius: 40px;
