@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ModalController, IonModal, IonFab, IonFabButton, IonIcon, IonContent, IonHeader, IonTabBar, IonTabButton, IonTabs, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { IonContent, IonFab, IonFabButton, IonHeader, IonIcon, IonModal, IonTabBar, IonTabButton, IonTabs, IonTitle, IonToolbar, ModalController } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { appsOutline, hammerOutline, addCircle, add } from 'ionicons/icons';
+import { add, addCircle, appsOutline, hammerOutline } from 'ionicons/icons';
 import { CredencialCadastrarPage } from 'src/app/modal/credencial-cadastrar/credencial-cadastrar.page';
 
 @Component({
@@ -18,18 +18,20 @@ export class TabmenuPage implements OnInit {
   private modalController = inject(ModalController);
 
   constructor() {
-    addIcons({appsOutline,add,hammerOutline,addCircle});
+    addIcons({ appsOutline, add, hammerOutline, addCircle });
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   public async redirecionarModalCredencialCadastrar() {
     const modalCredencialCadastro = await this.modalController.create({
       component: CredencialCadastrarPage,
       initialBreakpoint: 0.89,
-      breakpoints: [0.25, 0.50, 0.70, 0.90, 100]
+      breakpoints: [0.25, 0.50, 0.70, 0.89, 0.90, 100]
     });
-    return modalCredencialCadastro.present();
+    await modalCredencialCadastro.present();
+    const { role } = await modalCredencialCadastro.onWillDismiss();
+    console.log('Primária fechada com role:', role);
   }
 
 }
