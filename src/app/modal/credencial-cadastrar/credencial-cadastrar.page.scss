@@ -118,8 +118,12 @@ ion-content {
             .icone-secundario {
                 position: absolute;
                 // border: dashed 2px red;
-                right: 3.5rem;
+                top: 0.1rem;
+                right: 3.9rem;
                 cursor: pointer;
+                ion-icon {
+                    font-size: 1.7rem;
+                }
             }
         }
         ion-button {

@@ -19,7 +19,8 @@ export class CredencialCadastrarPage implements OnInit {
     addIcons({add,personOutline,mailOutline,lockClosedOutline,reloadOutline,keyOutline});
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
+
+  public gerarSenha() {}
 
 }
