@@ -9,7 +9,7 @@
 
   <section id="links">
 
-    <ion-button id="modal-secondary">
+    <ion-button id="modal-secondary" (click)="abrirPopoverPessoaCadastrar()">
       <ion-icon name="add"></ion-icon>
     </ion-button>
 
@@ -50,7 +50,7 @@
 
       <div class="formulario-input">
         <ion-label>E-mail</ion-label>
-        <input type="text" placeholder="Enter E-mail Address" maxlength="100" autocapitalize="off"/>
+        <input type="text" placeholder="Enter E-mail Address" maxlength="100" autocapitalize="off" />
         <ion-icon name="mail-outline"></ion-icon>
       </div>
 

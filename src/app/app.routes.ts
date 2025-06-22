@@ -6,6 +6,11 @@ export const routes: Routes = [
     redirectTo: 'tabmenu/principal',
     pathMatch: 'full',
   },
+  // {
+  //   path: '',
+  //   redirectTo: 'pessoa-cadastrar',
+  //   pathMatch: 'full',
+  // },
   {
     path: 'tabmenu',
     loadChildren: () => import("./component/tabmenu/tabmenu.routes").then(module => module.tabmenuRoutes),
@@ -13,5 +18,9 @@ export const routes: Routes = [
   {
     path: 'credencial-cadastrar',
     loadComponent: () => import('./modal/credencial-cadastrar/credencial-cadastrar.page').then( m => m.CredencialCadastrarPage)
+  },
+  {
+    path: 'pessoa-cadastrar',
+    loadComponent: () => import('./modal/pessoa-cadastrar/pessoa-cadastrar.page').then( m => m.PessoaCadastrarPage)
   },
 ];
