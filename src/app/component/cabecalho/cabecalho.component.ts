@@ -13,6 +13,10 @@ export class CabecalhoComponent  implements OnInit {
 
   public label = input<string>("");
 
+  public complemento = input<string>("Show All");
+
+  public showcomplemento = input<boolean>(false);
+
   constructor() { }
 
   ngOnInit() {}

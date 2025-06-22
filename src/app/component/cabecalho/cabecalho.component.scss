@@ -1,5 +1,13 @@
 ion-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
     ion-label {
         margin: 0.6rem;
+        font-weight: bold;
+    }
+    span {
+        font-size: 0.8rem;
     }
 }

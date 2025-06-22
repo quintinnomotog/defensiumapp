@@ -3,11 +3,15 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'principal',
+    redirectTo: 'tabmenu/principal',
     pathMatch: 'full',
   },
   {
-    path: 'principal',
-    loadComponent: () => import('./page/principal/principal.page').then( m => m.PrincipalPage)
+    path: "tabmenu",
+    loadChildren: () => import("./component/tabmenu/tabmenu.routes").then(module => module.tabmenuRoutes),
   },
+  {
+    path: 'senha-cadastrar',
+    loadComponent: () => import('./page/senha/senha-cadastrar/senha-cadastrar.page').then( m => m.SenhaCadastrarPage)
+  }
 ];
