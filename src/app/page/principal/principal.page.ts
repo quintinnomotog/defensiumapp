@@ -46,7 +46,7 @@ export class PrincipalPage implements OnInit {
   // FIXME: Deve fazer uma requisição passando o codePublic e retornar a senha verdadeira
   // não criptografada
   public async copiarSenha(credencial: any) {
-    
+    this.emitirMensagemToast();    
   }
 
   public findAll(): void {
