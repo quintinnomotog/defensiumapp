@@ -29,10 +29,6 @@ ion-tab-bar {
     box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.1);
 }
 
-// .searchbar-input.sc-ion-searchbar-md {
-//     height: 3.5rem !important;
-// }
-
 .column10 {
     flex: 10;
 }
@@ -64,106 +60,14 @@ ion-content {
 
 .popover::part(content) {
     width: 90%;
-    height: 43dvh;
+    height: 42dvh;
     border-radius: 20px;
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
-    //   background: rgba(255, 255, 255, 0.3);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), 0 0 10px rgba(155, 81, 224, 0.4);
 }
-
-// .popover::part(backdrop) {
-//     backdrop-filter: blur(15px);
-//     -webkit-backdrop-filter: blur(15px);
-//     background: rgba(0, 0, 0, 1);
-// }
 
 ion-popover {
     background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(1px);
 }
-
-// .popover::part(content) {
-//     width: 90%;
-//     height: 43dvh;
-//     border-radius: 20px;
-//     backdrop-filter: blur(15px);
-//     -webkit-backdrop-filter: blur(15px);
-//     box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-// }
-
-// .popover::part(backdrop) {
-//     // background: rgba(0, 0, 0, 0.9);
-//     backdrop-filter: blur(15px);
-//     -webkit-backdrop-filter: blur(15px);
-//     // border: dashed 2px red;
-// }
-
-// .modal::part(content) {
-//     border-radius: 30px;
-//     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-// }
-
-// .modal-secundaria {
-//     background: rgba(0, 0, 0, 0.7);
-//     width: 90%;
-//     height: 45dvh;
-//     margin: auto;
-//     border-radius: 16px;
-//     box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-// }
-
-// .modal-secundaria::part(backdrop) {
-//     background: rgba(0, 0, 0, 0.7);
-//     opacity: 1;
-//     filter: blur(1px) !important;
-// }
-
-// ion-modal.modal-secundaria::part(backdrop),
-// ion-modal.modal-secundaria ion-backdrop {
-//     background-color: rgba(0, 0, 0, 0.8) !important;
-//     backdrop-filter: blur(2px);
-// }
-
-// ion-modal.modal-secundaria::part(backdrop) {
-//   background: rgba(0, 0, 0, 0.7) !important;
-//   position: fixed;
-//   width: 100vw;
-//   height: 100vh;
-//   top: 0;
-//   left: 0;
-//   z-index: 9999;
-// }
-
-// ion-modal:not(.modal-secundaria) ion-backdrop {
-//     background-color: rgba(0, 0, 0, 0.3) !important;
-//     z-index: 10001;
-// }
-
-// .popover {
-//     width: 90vw;
-//     height: 60vh;
-//     margin: auto;
-//     max-width: 600px;
-//     max-height: 80vh;
-//     border-radius: 16px;
-//     padding: 16px;
-//     background: #fff;
-// }
-
-// .popover {
-//     .popover-content {
-//         border: dashed 2px red;
-//         // right: 10% !important;
-//     }
-// }
-
-// ion-popover {
-//     backdrop-filter: blur(2px);
-// }
-
-// ion-popover::part(backdrop) {
-//     background: rgba(0, 0, 0, 0.5);
-//     backdrop-filter: blur(2px);
-//     // border: dashed 2px red;
-// }

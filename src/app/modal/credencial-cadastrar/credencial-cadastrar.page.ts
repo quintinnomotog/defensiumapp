@@ -1,9 +1,9 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { PopoverController, ModalController, IonButton, IonIcon, IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { IonButton, IonContent, IonHeader, IonIcon, IonTitle, IonToolbar, ModalController, PopoverController } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { personOutline, add, mailOutline, keyOutline, lockClosedOutline, reloadOutline } from 'ionicons/icons';
+import { add, keyOutline, lockClosedOutline, mailOutline, personOutline, reloadOutline } from 'ionicons/icons';
 import { PessoaCadastrarPage } from '../pessoa-cadastrar/pessoa-cadastrar.page';
 
 @Component({
