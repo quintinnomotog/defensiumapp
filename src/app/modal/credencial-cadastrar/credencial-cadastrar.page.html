@@ -15,7 +15,8 @@
 
     <swiper-container [slidesPerView]="2.8" [spaceBetween]="10">
       @for(item of categoriaCredencialList; track item.codePublic) {
-      <swiper-slide (click)="selecionarCategoriaCredencial(item)">
+      <swiper-slide (click)="selecionarCategoriaCredencial(item)"
+        [class.selecionar-categoria-credencial]="credencialFormGroup.get('categoriaCredencialEntity')?.value === item.code">
         {{ item.descricao }}
       </swiper-slide>
       }

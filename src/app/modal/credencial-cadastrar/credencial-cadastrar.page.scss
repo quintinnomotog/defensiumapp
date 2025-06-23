@@ -64,6 +64,14 @@ ion-content {
                 background: #eef0f2;
                 color: #57697c;
             }
+
+            swiper-slide {
+                &.selecionar-categoria-credencial {
+                    background-color: var(--ion-color-primary);
+                    color: white;
+                    font-weight: bold;
+                }
+            }
         }
 
     }
@@ -73,6 +81,7 @@ ion-content {
         display: flex;
         justify-content: center;
         align-items: center;
+
         ion-spinner {
             color: #b6c0ca;
             // border: dashed red 2px;
