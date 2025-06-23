@@ -4,7 +4,6 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { IonButton, IonContent, IonHeader, IonIcon, IonTitle, IonToolbar, ModalController, PopoverController, ToastController } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { add, checkmarkCircleOutline, closeCircleOutline, documentTextOutline, keyOutline, lockClosedOutline, mailOutline, personOutline, reloadOutline } from 'ionicons/icons';
-import { CategoriaCredencialModel } from 'src/app/model/categoria-credencial.model';
 import { CredencialModel } from 'src/app/model/credencial.model';
 import { CategoriaCredencialService } from 'src/app/service/categoria-credencial.service';
 import { CredencialService } from 'src/app/service/credencial.service';
@@ -30,17 +29,20 @@ export class CredencialCadastrarPage implements OnInit {
 
   private toastController = inject(ToastController);
 
-  public categoriaCredencialList: CategoriaCredencialModel[] = [];
+  public categoriaCredencialList: any[] = [];
 
   private categoriaCredencialService = inject(CategoriaCredencialService);
 
   constructor(private formBuilder: FormBuilder) {
     addIcons({ closeCircleOutline, checkmarkCircleOutline, add, personOutline, mailOutline, documentTextOutline, lockClosedOutline, reloadOutline, keyOutline });
     this.configurarFormulario();
-    this.getCategoriaCredencial();
   }
 
   ngOnInit() { }
+
+  ionViewDidEnter() {
+    this.getCategoriaCredencial();
+  }
 
   public configurarFormulario() {
     this.credencialFormGroup = this.formBuilder.group({
@@ -113,6 +115,7 @@ export class CredencialCadastrarPage implements OnInit {
       senha: this.credencialFormGroup.get('senha')?.value,
       categoriaCredencialEntity: {
         code: this.credencialFormGroup.get('categoriaCredencialModel')?.value,
+        codePublic: "",
         descricao: ""
       },
       pessoaEntity: {
@@ -160,7 +163,15 @@ export class CredencialCadastrarPage implements OnInit {
   }
 
   public getCategoriaCredencial() {
-    this.categoriaCredencialService.getFindAll().subscribe({});
+    this.categoriaCredencialService.getFindAll().subscribe({
+      next: async (response) => {
+        console.log(response);
+        this.categoriaCredencialList = response;
+      },
+      error: async (response) => {
+        console.error('Erro ao realizar a requisição:', response);
+      }
+    });
   }
 
 }

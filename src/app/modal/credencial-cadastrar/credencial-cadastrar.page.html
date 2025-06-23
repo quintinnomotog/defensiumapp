@@ -14,22 +14,11 @@
     </ion-button>
 
     <swiper-container [slidesPerView]="2.8" [spaceBetween]="10">
-      <swiper-slide>Instagram</swiper-slide>
-      <swiper-slide>Facebook</swiper-slide>
-      <swiper-slide>Dribbble</swiper-slide>
-      <swiper-slide>Github</swiper-slide>
-      <swiper-slide>Google</swiper-slide>
-      <swiper-slide>Microsoft</swiper-slide>
-      <swiper-slide>Amazon</swiper-slide>
-      <swiper-slide>Pinterest</swiper-slide>
-      <swiper-slide>Instagram</swiper-slide>
-      <swiper-slide>Facebook</swiper-slide>
-      <swiper-slide>Dribbble</swiper-slide>
-      <swiper-slide>Github</swiper-slide>
-      <swiper-slide>Google</swiper-slide>
-      <swiper-slide>Microsoft</swiper-slide>
-      <swiper-slide>Amazon</swiper-slide>
-      <swiper-slide>Pinterest</swiper-slide>
+      @for(item of categoriaCredencialList; track item.codePublic) {
+        <swiper-slide>
+          {{ item.descricao }}
+        </swiper-slide>
+      }
     </swiper-container>
 
   </section>
@@ -50,14 +39,16 @@
 
       <div class="formulario-input">
         <ion-label>E-mail</ion-label>
-        <input type="text" placeholder="Enter E-mail Address" maxlength="100" autocapitalize="off" formControlName="identificador" [class.campo-invalido]="isCampoInvalido('identificador')" />
+        <input type="text" placeholder="Enter E-mail Address" maxlength="100" autocapitalize="off"
+          formControlName="identificador" [class.campo-invalido]="isCampoInvalido('identificador')" />
         <ion-icon name="mail-outline"></ion-icon>
         <small *ngIf="isCampoInvalido('identificador')">E-mail Inválido!</small>
       </div>
 
       <div class="formulario-input">
         <ion-label>Descrição</ion-label>
-        <input type="text" placeholder="Descrição" maxlength="100" formControlName="descricao" [class.campo-invalido]="isCampoInvalido('descricao')" />
+        <input type="text" placeholder="Descrição" maxlength="100" formControlName="descricao"
+          [class.campo-invalido]="isCampoInvalido('descricao')" />
         <ion-icon name="document-text-outline"></ion-icon>
         <small *ngIf="isCampoInvalido('descricao')">Descrição Inválida!</small>
       </div>
@@ -65,7 +56,8 @@
       <!-- FIXME: Esse campo fica atrás do teclado no Android, deve-se ajustar conforme o usuário digita -->
       <div class="formulario-input">
         <ion-label>Password</ion-label>
-        <input type="password" placeholder="Enter Password" maxlength="60" formControlName="senha" [class.campo-invalido]="isCampoInvalido('senha')" />
+        <input type="password" placeholder="Enter Password" maxlength="60" formControlName="senha"
+          [class.campo-invalido]="isCampoInvalido('senha')" />
         <ion-icon name="lock-closed-outline"></ion-icon>
         <div (click)="gerarSenha()" class="icone-secundario">
           <ion-icon name="reload-outline"></ion-icon>

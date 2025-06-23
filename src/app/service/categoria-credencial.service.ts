@@ -15,8 +15,8 @@ export class CategoriaCredencialService {
 
   constructor() { }
 
-  public getFindAll(): Observable<CategoriaCredencialModel[]> {
-    return this.httpClient.get<CategoriaCredencialModel[]>(environment.url_api.concat(this.ENDPOINT));
+  public getFindAll(): Observable<any> {
+    return this.httpClient.get<any>(environment.url_api.concat(this.ENDPOINT));
   }
 
 }
