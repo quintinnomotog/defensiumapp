@@ -33,6 +33,8 @@ export class CredencialCadastrarPage implements OnInit {
 
   private categoriaCredencialService = inject(CategoriaCredencialService);
 
+  public isLoading: boolean = true;
+
   constructor(private formBuilder: FormBuilder) {
     addIcons({ closeCircleOutline, checkmarkCircleOutline, add, personOutline, mailOutline, documentTextOutline, lockClosedOutline, reloadOutline, keyOutline });
     this.configurarFormulario();
@@ -46,8 +48,8 @@ export class CredencialCadastrarPage implements OnInit {
 
   public configurarFormulario() {
     this.credencialFormGroup = this.formBuilder.group({
-      categoriaCredencialModel: [1, Validators.required],
-      pessoaModel: [1, Validators.required],
+      categoriaCredencialEntity: ["", Validators.required],
+      pessoaEntity: [1, Validators.required],
       identificador: ["", [Validators.required, Validators.email]],
       senha: ["", Validators.required],
       descricao: ["", Validators.required],
@@ -114,12 +116,12 @@ export class CredencialCadastrarPage implements OnInit {
       identificador: this.credencialFormGroup.get('identificador')?.value,
       senha: this.credencialFormGroup.get('senha')?.value,
       categoriaCredencialEntity: {
-        code: this.credencialFormGroup.get('categoriaCredencialModel')?.value,
+        code: this.credencialFormGroup.get('categoriaCredencialEntity')?.value,
         codePublic: "",
         descricao: ""
       },
       pessoaEntity: {
-        code: this.credencialFormGroup.get('pessoaModel')?.value
+        code: this.credencialFormGroup.get('pessoaEntity')?.value
       },
       descricao: this.credencialFormGroup.get('descricao')?.value,
       link: this.credencialFormGroup.get('link')?.value,
@@ -163,14 +165,23 @@ export class CredencialCadastrarPage implements OnInit {
   }
 
   public getCategoriaCredencial() {
+    this.isLoading = true;
     this.categoriaCredencialService.getFindAll().subscribe({
       next: async (response) => {
         console.log(response);
         this.categoriaCredencialList = response;
+        this.isLoading = false;
       },
       error: async (response) => {
         console.error('Erro ao realizar a requisição:', response);
       }
+    });
+  }
+
+  public selecionarCategoriaCredencial(item: any) {
+    console.log("ITEM: ", item);
+    this.credencialFormGroup.patchValue({
+      categoriaCredencialEntity: item.code
     });
   }
 

@@ -63,8 +63,20 @@ ion-content {
                 height: 50px;
                 background: #eef0f2;
                 color: #57697c;
-                // border: dashed red 2px;
             }
+        }
+
+    }
+
+    #loading {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        ion-spinner {
+            color: #b6c0ca;
+            // border: dashed red 2px;
+            font-style: 1.3rem;
         }
     }
 
@@ -80,16 +92,19 @@ ion-content {
 
     #formulario {
         margin-top: 2rem;
+
         .formulario-input {
             position: relative;
             display: flex;
             flex-direction: column;
             align-items: start;
+
             ion-label {
                 position: relative;
                 font-weight: bold;
                 margin-bottom: 1rem;
             }
+
             input {
                 position: relative;
                 width: 100%;
@@ -103,16 +118,20 @@ ion-content {
                 font-weight: bold;
                 margin-bottom: 2rem;
             }
+
             input.campo-invalido {
                 border: solid 2px var(--ion-color-danger);
             }
+
             ::placeholder {
                 font-weight: bold;
                 color: #444f60;
             }
+
             input:focus {
                 border: solid #9290f3 2.2px;
             }
+
             ion-icon {
                 position: absolute;
                 margin-top: 3.4rem;
@@ -120,15 +139,18 @@ ion-content {
                 color: #6d7178;
                 font-size: 1.4rem;
             }
+
             .icone-secundario {
                 position: absolute;
                 top: 0.1rem;
                 right: 3.9rem;
                 cursor: pointer;
+
                 ion-icon {
                     font-size: 1.7rem;
                 }
             }
+
             small {
                 color: var(--ion-color-danger);
                 position: absolute;
@@ -137,6 +159,7 @@ ion-content {
                 font-size: 0.8rem;
             }
         }
+
         ion-button {
             width: 80%;
             height: 55px;

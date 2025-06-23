@@ -7,7 +7,7 @@
     </div>
   </section>
 
-  <section id="links">
+  <section id="links" *ngIf="!isLoading">
 
     <ion-button id="modal-secondary" (click)="abrirPopoverPessoaCadastrar()">
       <ion-icon name="add"></ion-icon>
@@ -15,12 +15,16 @@
 
     <swiper-container [slidesPerView]="2.8" [spaceBetween]="10">
       @for(item of categoriaCredencialList; track item.codePublic) {
-        <swiper-slide>
-          {{ item.descricao }}
-        </swiper-slide>
+      <swiper-slide (click)="selecionarCategoriaCredencial(item)">
+        {{ item.descricao }}
+      </swiper-slide>
       }
     </swiper-container>
 
+  </section>
+
+  <section id="loading" *ngIf="isLoading">
+    <ion-spinner></ion-spinner>
   </section>
 
   <section id="dividor">
@@ -65,7 +69,7 @@
         <small *ngIf="isCampoInvalido('senha')">Senha Inválida!</small>
       </div>
 
-      <ion-button type="submit" expand="block">Save</ion-button>
+      <ion-button type="submit" expand="block" [disabled]="!credencialFormGroup.valid">Save</ion-button>
 
     </form>
 
