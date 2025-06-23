@@ -37,6 +37,7 @@ export class PrincipalPage implements OnInit {
     addIcons({
       copyOutline, copy
     });
+    this.findAll();
   }
 
   ngOnInit() {

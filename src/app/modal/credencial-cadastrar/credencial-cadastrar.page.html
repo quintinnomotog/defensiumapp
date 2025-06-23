@@ -40,7 +40,7 @@
 
   <section id="formulario">
 
-    <form>
+    <form [formGroup]="credencialFormGroup" (ngSubmit)="onCreate()">
 
       <div class="formulario-input">
         <ion-label>Username</ion-label>
@@ -50,21 +50,27 @@
 
       <div class="formulario-input">
         <ion-label>E-mail</ion-label>
-        <input type="text" placeholder="Enter E-mail Address" maxlength="100" autocapitalize="off" />
+        <input type="text" placeholder="Enter E-mail Address" maxlength="100" autocapitalize="off" formControlName="identificador" />
         <ion-icon name="mail-outline"></ion-icon>
+      </div>
+
+      <div class="formulario-input">
+        <ion-label>Descrição</ion-label>
+        <input type="text" placeholder="Descrição" maxlength="100" formControlName="descricao" />
+        <ion-icon name="document-text-outline"></ion-icon>
       </div>
 
       <!-- FIXME: Esse campo fica atrás do teclado no Android, deve-se ajustar conforme o usuário digita -->
       <div class="formulario-input">
         <ion-label>Password</ion-label>
-        <input type="password" placeholder="Enter Password" maxlength="60" />
+        <input type="password" placeholder="Enter Password" maxlength="60" formControlName="senha" />
         <ion-icon name="lock-closed-outline"></ion-icon>
         <div (click)="gerarSenha()" class="icone-secundario">
           <ion-icon name="reload-outline"></ion-icon>
         </div>
       </div>
 
-      <ion-button expand="block" disabled="true">Save</ion-button>
+      <ion-button type="submit" expand="block">Save</ion-button>
 
     </form>
 

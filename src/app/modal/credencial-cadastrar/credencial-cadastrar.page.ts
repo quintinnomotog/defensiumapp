@@ -1,9 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, inject, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { IonButton, IonContent, IonHeader, IonIcon, IonTitle, IonToolbar, ModalController, PopoverController } from '@ionic/angular/standalone';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { IonButton, IonContent, IonHeader, IonIcon, IonTitle, IonToolbar, ModalController, PopoverController, ToastController } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { add, keyOutline, lockClosedOutline, mailOutline, personOutline, reloadOutline } from 'ionicons/icons';
+import { add, checkmarkCircleOutline, closeCircleOutline, documentTextOutline, keyOutline, lockClosedOutline, mailOutline, personOutline, reloadOutline } from 'ionicons/icons';
+import { CredencialModel } from 'src/app/model/credencial.model';
+import { CredencialService } from 'src/app/service/credencial.service';
 import { PessoaCadastrarPage } from '../pessoa-cadastrar/pessoa-cadastrar.page';
 
 @Component({
@@ -11,7 +13,7 @@ import { PessoaCadastrarPage } from '../pessoa-cadastrar/pessoa-cadastrar.page';
   templateUrl: './credencial-cadastrar.page.html',
   styleUrls: ['./credencial-cadastrar.page.scss'],
   standalone: true,
-  imports: [IonButton, IonIcon, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule],
+  imports: [ReactiveFormsModule, IonButton, IonIcon, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class CredencialCadastrarPage implements OnInit {
@@ -20,11 +22,30 @@ export class CredencialCadastrarPage implements OnInit {
 
   private popoverController = inject(PopoverController);
 
-  constructor() {
-    addIcons({ add, personOutline, mailOutline, lockClosedOutline, reloadOutline, keyOutline });
+  public credencialFormGroup!: FormGroup;
+
+  private credencialService = inject(CredencialService);
+
+  private toastController = inject(ToastController);
+
+  constructor(private formBuilder: FormBuilder) {
+    addIcons({ closeCircleOutline, checkmarkCircleOutline, add, personOutline, mailOutline, documentTextOutline, lockClosedOutline, reloadOutline, keyOutline });
+    this.configurarFormulario();
   }
 
   ngOnInit() { }
+
+  public configurarFormulario() {
+    this.credencialFormGroup = this.formBuilder.group({
+      categoriaCredencialModel: [1, Validators.required],
+      pessoaModel: [1, Validators.required],
+      identificador: ["", [Validators.required, Validators.email]],
+      senha: ["", Validators.required],
+      descricao: ["", Validators.required],
+      link: [""],
+      observacao: [""],
+    });
+  }
 
   public gerarSenha() { }
 
@@ -56,6 +77,73 @@ export class CredencialCadastrarPage implements OnInit {
       cssClass: "popover"
     });
     return await popover.present();
+  }
+
+  public onCreate() {
+    if (this.credencialFormGroup.valid) {
+      const credencialModel = this.configurarCredencialModel();
+      this.credencialService.create(credencialModel).subscribe({
+        next: async (response) => {
+          this.apresentarToastSucesso();
+          this.clearFormulario();
+          this.getFecharModal();
+        },
+        error: async (response) => {
+          console.error("Erro ao salvar credencial:", response);
+          this.apresentarToastErro();
+        }
+      });
+    }
+  }
+
+  private clearFormulario() {
+    this.credencialFormGroup.reset();
+  }
+
+  private configurarCredencialModel(): CredencialModel {
+    return {
+      identificador: this.credencialFormGroup.get('identificador')?.value,
+      senha: this.credencialFormGroup.get('senha')?.value,
+      categoriaCredencialEntity: {
+        code: this.credencialFormGroup.get('categoriaCredencialModel')?.value
+      },
+      pessoaEntity: {
+        code: this.credencialFormGroup.get('pessoaModel')?.value
+      },
+      descricao: this.credencialFormGroup.get('descricao')?.value,
+      link: this.credencialFormGroup.get('link')?.value,
+      observacao: this.credencialFormGroup.get('observacao')?.value,
+    };
+  }
+
+  private async apresentarToastSucesso() {
+    const toast = await this.toastController.create({
+      message: "Credencial Cadastrada com Sucesso!",
+      duration: 3000,
+      color: "success",
+      animated: true,
+      icon: "checkmark-circle-outline",
+      position: "top"
+    });
+    return toast.present();
+  }
+
+  private async apresentarToastErro() {
+    const toast = await this.toastController.create({
+      message: "Falha ao tentar cadastrar Credencial!",
+      duration: 3000,
+      color: "danger",
+      animated: true,
+      icon: "close-circle-outline",
+      position: "top"
+    });
+    return toast.present();
+  }
+
+  private redirecionarTela() { }
+
+  private getFecharModal() {
+    this.modalController.dismiss(null, 'salvo');
   }
 
 }
