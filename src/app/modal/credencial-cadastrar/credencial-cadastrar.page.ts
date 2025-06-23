@@ -4,7 +4,9 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { IonButton, IonContent, IonHeader, IonIcon, IonTitle, IonToolbar, ModalController, PopoverController, ToastController } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { add, checkmarkCircleOutline, closeCircleOutline, documentTextOutline, keyOutline, lockClosedOutline, mailOutline, personOutline, reloadOutline } from 'ionicons/icons';
+import { CategoriaCredencialModel } from 'src/app/model/categoria-credencial.model';
 import { CredencialModel } from 'src/app/model/credencial.model';
+import { CategoriaCredencialService } from 'src/app/service/categoria-credencial.service';
 import { CredencialService } from 'src/app/service/credencial.service';
 import { PessoaCadastrarPage } from '../pessoa-cadastrar/pessoa-cadastrar.page';
 
@@ -28,9 +30,14 @@ export class CredencialCadastrarPage implements OnInit {
 
   private toastController = inject(ToastController);
 
+  public categoriaCredencialList: CategoriaCredencialModel[] = [];
+
+  private categoriaCredencialService = inject(CategoriaCredencialService);
+
   constructor(private formBuilder: FormBuilder) {
     addIcons({ closeCircleOutline, checkmarkCircleOutline, add, personOutline, mailOutline, documentTextOutline, lockClosedOutline, reloadOutline, keyOutline });
     this.configurarFormulario();
+    this.getCategoriaCredencial();
   }
 
   ngOnInit() { }
@@ -105,7 +112,8 @@ export class CredencialCadastrarPage implements OnInit {
       identificador: this.credencialFormGroup.get('identificador')?.value,
       senha: this.credencialFormGroup.get('senha')?.value,
       categoriaCredencialEntity: {
-        code: this.credencialFormGroup.get('categoriaCredencialModel')?.value
+        code: this.credencialFormGroup.get('categoriaCredencialModel')?.value,
+        descricao: ""
       },
       pessoaEntity: {
         code: this.credencialFormGroup.get('pessoaModel')?.value
@@ -149,6 +157,10 @@ export class CredencialCadastrarPage implements OnInit {
   public isCampoInvalido(nomeCampoFormulario: string): boolean {
     const formularioGroup = this.credencialFormGroup.get(nomeCampoFormulario);
     return formularioGroup!.invalid && formularioGroup!.touched;
+  }
+
+  public getCategoriaCredencial() {
+    this.categoriaCredencialService.getFindAll().subscribe({});
   }
 
 }

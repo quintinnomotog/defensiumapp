@@ -1,0 +1,22 @@
+import { HttpClient } from '@angular/common/http';
+import { inject, Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment.prod';
+import { CategoriaCredencialModel } from '../model/categoria-credencial.model';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class CategoriaCredencialService {
+
+  private httpClient = inject(HttpClient);
+
+  private ENDPOINT = "/defensium/categoria-credencial";
+
+  constructor() { }
+
+  public getFindAll(): Observable<CategoriaCredencialModel[]> {
+    return this.httpClient.get<CategoriaCredencialModel[]>(environment.url_api.concat(this.ENDPOINT));
+  }
+
+}
