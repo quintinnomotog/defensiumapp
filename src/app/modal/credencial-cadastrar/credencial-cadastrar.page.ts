@@ -146,4 +146,9 @@ export class CredencialCadastrarPage implements OnInit {
     this.modalController.dismiss(null, 'salvo');
   }
 
+  public isCampoInvalido(nomeCampoFormulario: string): boolean {
+    const formularioGroup = this.credencialFormGroup.get(nomeCampoFormulario);
+    return formularioGroup!.invalid && formularioGroup!.touched;
+  }
+
 }

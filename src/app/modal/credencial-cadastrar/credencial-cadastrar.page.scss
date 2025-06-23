@@ -100,6 +100,10 @@ ion-content {
                 padding-left: 4rem;
                 margin-bottom: 1rem;
                 font-weight: bold;
+                margin-bottom: 2rem;
+            }
+            input.campo-invalido {
+                border: solid 2px var(--ion-color-danger);
             }
             ::placeholder {
                 font-weight: bold;
@@ -117,13 +121,19 @@ ion-content {
             }
             .icone-secundario {
                 position: absolute;
-                // border: dashed 2px red;
                 top: 0.1rem;
                 right: 3.9rem;
                 cursor: pointer;
                 ion-icon {
                     font-size: 1.7rem;
                 }
+            }
+            small {
+                color: var(--ion-color-danger);
+                position: absolute;
+                top: 6.5rem;
+                left: 1.5rem;
+                font-size: 0.8rem;
             }
         }
         ion-button {
