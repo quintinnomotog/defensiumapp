@@ -160,6 +160,17 @@ ion-content {
                 }
             }
 
+            .icone-terceario {
+                position: absolute;
+                top: 0.1rem;
+                right: 7rem;
+                cursor: pointer;
+
+                ion-icon {
+                    font-size: 1.8rem;
+                }
+            }
+
             small {
                 color: var(--ion-color-danger);
                 position: absolute;

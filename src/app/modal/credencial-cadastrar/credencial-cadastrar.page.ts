@@ -3,7 +3,7 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, inject, OnInit } from '@angular/core
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IonButton, IonContent, IonHeader, IonIcon, IonTitle, IonToolbar, ModalController, PopoverController, ToastController } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { add, checkmarkCircleOutline, closeCircleOutline, documentTextOutline, keyOutline, lockClosedOutline, mailOutline, personOutline, reloadOutline } from 'ionicons/icons';
+import { add, checkmarkCircleOutline, closeCircleOutline, documentTextOutline, keyOutline, lockClosedOutline, mailOutline, personOutline, reloadOutline, eyeOutline, eyeOffOutline } from 'ionicons/icons';
 import { CredencialModel } from 'src/app/model/credencial.model';
 import { CategoriaCredencialService } from 'src/app/service/categoria-credencial.service';
 import { CredencialService } from 'src/app/service/credencial.service';
@@ -35,8 +35,12 @@ export class CredencialCadastrarPage implements OnInit {
 
   public isLoading: boolean = true;
 
+  public iconeVerificarSenha: string = "eye-off-outline";
+
+  public tipoInpuSenha: string = "password";
+
   constructor(private formBuilder: FormBuilder) {
-    addIcons({ closeCircleOutline, checkmarkCircleOutline, add, personOutline, mailOutline, documentTextOutline, lockClosedOutline, reloadOutline, keyOutline });
+    addIcons({ add, personOutline, mailOutline, documentTextOutline, lockClosedOutline, reloadOutline, eyeOffOutline, eyeOutline, closeCircleOutline, checkmarkCircleOutline, keyOutline });
     this.configurarFormulario();
   }
 
@@ -183,6 +187,16 @@ export class CredencialCadastrarPage implements OnInit {
     this.credencialFormGroup.patchValue({
       categoriaCredencialEntity: item.code
     });
+  }
+
+  public apresentarOcultarSenha() {
+    if (this.tipoInpuSenha === "password") {
+      this.tipoInpuSenha = "text";
+      this.iconeVerificarSenha = "eye-outline";
+    } else {
+      this.tipoInpuSenha = "password";
+      this.iconeVerificarSenha = "eye-off-outline";
+    }
   }
 
 }

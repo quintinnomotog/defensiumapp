@@ -27,7 +27,7 @@ export class TabmenuPage implements OnInit {
     const modalCredencialCadastro = await this.modalController.create({
       component: CredencialCadastrarPage,
       initialBreakpoint: 100,
-      breakpoints: [0.25, 0.50, 0.70, 0.89, 0.90, 100]
+      breakpoints: [0.25, 0.50, 100]
     });
     await modalCredencialCadastro.present();
     const { role } = await modalCredencialCadastro.onWillDismiss();

@@ -61,11 +61,14 @@
       <!-- FIXME: Esse campo fica atrás do teclado no Android, deve-se ajustar conforme o usuário digita -->
       <div class="formulario-input">
         <ion-label>Password</ion-label>
-        <input type="password" placeholder="Enter Password" maxlength="60" formControlName="senha"
+        <input [type]="tipoInpuSenha" placeholder="Enter Password" maxlength="60" formControlName="senha"
           [class.campo-invalido]="isCampoInvalido('senha')" />
         <ion-icon name="lock-closed-outline"></ion-icon>
         <div (click)="gerarSenha()" class="icone-secundario">
           <ion-icon name="reload-outline"></ion-icon>
+        </div>
+        <div (click)="apresentarOcultarSenha()" class="icone-terceario">
+          <ion-icon [name]="iconeVerificarSenha"></ion-icon>
         </div>
         <small *ngIf="isCampoInvalido('senha')">Senha Inválida!</small>
       </div>
