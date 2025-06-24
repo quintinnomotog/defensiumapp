@@ -8,6 +8,7 @@ import { CredencialModel } from 'src/app/model/credencial.model';
 import { CategoriaCredencialService } from 'src/app/service/categoria-credencial.service';
 import { CredencialService } from 'src/app/service/credencial.service';
 import { PessoaCadastrarPage } from '../pessoa-cadastrar/pessoa-cadastrar.page';
+import { GeradorSenhaService } from 'src/app/service/gerador-senha.service';
 
 @Component({
   selector: 'app-credencial-cadastrar',
@@ -39,6 +40,8 @@ export class CredencialCadastrarPage implements OnInit {
 
   public tipoInpuSenha: string = "password";
 
+  private geradorSenhaService = inject(GeradorSenhaService);
+
   constructor(private formBuilder: FormBuilder) {
     addIcons({ add, personOutline, mailOutline, documentTextOutline, lockClosedOutline, reloadOutline, eyeOffOutline, eyeOutline, closeCircleOutline, checkmarkCircleOutline, keyOutline });
     this.configurarFormulario();
@@ -62,7 +65,11 @@ export class CredencialCadastrarPage implements OnInit {
     });
   }
 
-  public gerarSenha() { }
+  public gerarSenha() {
+    this.credencialFormGroup.patchValue({
+      senha: this.geradorSenhaService.gerarSenha(),
+    });    
+  }
 
   public async abrirModalPessoaCadastrar() {
 
