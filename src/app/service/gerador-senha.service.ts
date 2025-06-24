@@ -16,7 +16,7 @@ export class GeradorSenhaService {
       simbolos: '!@#$%&*()_+-=[]{}|;:,.<>?'
     };
 
-    const comprimentoSenha = 16;
+    const comprimentoSenha = 20;
 
     let senha = [
       this.getRandomChar(caracteres.maiusculas),
@@ -34,10 +34,6 @@ export class GeradorSenhaService {
     for (let i = senha.length; i < comprimentoSenha; i++) {
       senha.push(this.getRandomChar(todosCaracteres));
     }
-
-    // this.credencialFormGroup.patchValue({
-    //   senha: senha.join('')
-    // });
 
     return senha.sort(() => Math.random() - 0.5).join('');
   }
