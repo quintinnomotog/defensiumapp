@@ -73,4 +73,8 @@ export class PrincipalPage implements OnInit {
     return toast.present();
   }
 
+  public atualizarDadosCredenciais() {
+    this.findAll();
+  }
+
 }
