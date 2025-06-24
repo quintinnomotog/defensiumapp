@@ -24,9 +24,11 @@
     }
 
     .box-b {
-        img {
-            width: 28px;
-            height: 28px;
+        ion-icon {
+            // border: solid red 3px;
+            font-size: 1.9rem;
+            color: rgb(138, 138, 138);
+            margin-right: 1.4rem;
         }
     }
 }

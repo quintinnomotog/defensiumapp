@@ -4,7 +4,7 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, inject, OnInit } from '@angular/core
 import { FormsModule } from '@angular/forms';
 import { IonAvatar, IonButton, IonContent, IonHeader, IonSearchbar, IonText, IonTitle, IonToolbar, ToastController } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { copy, copyOutline } from 'ionicons/icons';
+import { copy, copyOutline, reloadOutline, reload, notificationsOutline } from 'ionicons/icons';
 import { CredencialService } from 'src/app/service/credencial.service';
 
 @Component({
@@ -34,9 +34,7 @@ export class PrincipalPage implements OnInit {
   // ];
 
   constructor() {
-    addIcons({
-      copyOutline, copy
-    });
+    addIcons({reload,notificationsOutline,copyOutline,reloadOutline,copy});
   }
 
   ngOnInit() {
