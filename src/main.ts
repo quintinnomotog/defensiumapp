@@ -5,6 +5,12 @@ import { PreloadAllModules, RouteReuseStrategy, provideRouter, withPreloading } 
 import { IonicRouteStrategy, provideIonicAngular } from '@ionic/angular/standalone';
 import { AppComponent } from './app/app.component';
 import { routes } from './app/app.routes';
+import { setupConfig } from '@ionic/core';
+
+setupConfig({
+  scrollAssist: true,
+  scrollPadding: false
+});
 
 bootstrapApplication(AppComponent, {
   providers: [
