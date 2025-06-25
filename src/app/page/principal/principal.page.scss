@@ -25,12 +25,26 @@
 
     .box-b {
         ion-icon {
-            // border: solid red 3px;
             font-size: 1.9rem;
             color: rgb(138, 138, 138);
             margin-right: 1.4rem;
             cursor: pointer;
         }
+    }
+}
+
+.rotacao-icone {
+    animation: animation 1s linear infinite;
+    // border: solid red 3px;
+}
+
+@keyframes animation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
     }
 }
 
@@ -93,6 +107,7 @@
             justify-content: center;
             align-items: center;
             cursor: pointer;
+
             img {
                 width: 60px;
                 height: 60px;

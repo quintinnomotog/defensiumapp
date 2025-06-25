@@ -4,7 +4,7 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, inject, OnInit } from '@angular/core
 import { FormsModule } from '@angular/forms';
 import { IonAvatar, IonButton, IonContent, IonHeader, IonSearchbar, IonText, IonTitle, IonToolbar, ToastController } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { copy, copyOutline, reloadOutline, reload, notificationsOutline } from 'ionicons/icons';
+import { copy, copyOutline, notifications, notificationsOutline, reload, reloadOutline } from 'ionicons/icons';
 import { CredencialService } from 'src/app/service/credencial.service';
 
 @Component({
@@ -26,28 +26,26 @@ export class PrincipalPage implements OnInit {
 
   public credencialList: any[] = [];
 
-  // public credencialList = [
-  //   { "code": 1, nome: "Google Account", imagem: "assets/icon/google.png", email: "jhon.doe@gmail.com", senha: "12345648" },
-  //   { "code": 2, nome: "Netflix Personal", imagem: "assets/icon/netflix.png", email: "jhon.doe@gmail.com", senha: "12345648" },
-  //   { "code": 3, nome: "Twitter", imagem: "assets/icon/x.png", email: "jhon.doe@gmail.com", senha: "12345648" },
-  //   { "code": 4, nome: "Dribbble Pro", imagem: "assets/icon/dribbble.png", email: "jhon.doe@gmail.com", senha: "12345648" }
-  // ];
+  public isAnimacaoAtivada: boolean = false;
 
   constructor() {
-    addIcons({reload,notificationsOutline,copyOutline,reloadOutline,copy});
+    addIcons({ reload, notifications, copyOutline, notificationsOutline, reloadOutline, copy });
   }
 
   ngOnInit() {
     this.findAll();
   }
 
+  ionViewWillEnter() {}
+
   // FIXME: Deve fazer uma requisição passando o codePublic e retornar a senha verdadeira
   // não criptografada
   public async copiarSenha(credencial: any) {
-    this.emitirMensagemToast();    
+    await navigator.clipboard.writeText(credencial.senha);
+    this.emitirMensagemToast();
   }
 
-  public findAll(): void {
+  public findAll(): void {  
     this.credencialService.findAll().subscribe({
       next: (response: any) => {
         console.log(response);
@@ -57,6 +55,7 @@ export class PrincipalPage implements OnInit {
         console.error('Erro ao buscar credenciais:', error);
       }
     });
+    this.isAnimacaoAtivada = false;
   }
 
   public getRecuperarNome(item: any) {
@@ -74,7 +73,12 @@ export class PrincipalPage implements OnInit {
   }
 
   public atualizarDadosCredenciais() {
-    this.findAll();
+    this.isAnimacaoAtivada = true;
+    setInterval(() => {
+      this.findAll();
+      this.isAnimacaoAtivada = false;
+      return;
+    }, 2000);
   }
 
 }
