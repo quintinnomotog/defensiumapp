@@ -183,7 +183,9 @@ export class PrincipalPage implements OnInit {
     const r = Math.floor(Math.random() * 80) + 150;
     const g = Math.floor(Math.random() * 80) + 150;
     const b = Math.floor(Math.random() * 80) + 150;
-    return `#${r.toString(16)}${g.toString(16)}${b.toString(16)}`;
+    const cor = `#${r.toString(16)}${g.toString(16)}${b.toString(16)}`;
+    console.log(cor);    
+    return cor;
   }
 
   private getIconeAleatorio(): string {

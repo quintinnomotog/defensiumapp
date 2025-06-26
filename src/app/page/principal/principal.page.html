@@ -48,7 +48,7 @@
       </swiper-slide>
     </swiper-container> -->
 
-    <swiper-container [slidesPerView]="2.5" [spaceBetween]="20">
+    <swiper-container [slidesPerView]="2.5" [spaceBetween]="10">
       @for(item of categoriaCredencialList; track item.codePublic) {
       <swiper-slide [style.background]="item.background">
         <ion-icon [name]="item.icone"></ion-icon>
