@@ -6,12 +6,13 @@
           <img src="assets/images/avatar.png" />
         </ion-avatar>
         <ion-text>
-          <b>Hello, John</b>
-          <p>Good Morning</p>
+          <b>José Quintinno</b>
+          <p>Administrador</p>
         </ion-text>
       </div>
       <div class="box-b">
-        <ion-icon name="reload" (click)="atualizarDadosCredenciais()" [class.rotacao-icone]="isAnimacaoAtivada"></ion-icon>
+        <ion-icon name="reload" (click)="atualizarDadosCredenciais()"
+          [class.rotacao-icone]="isAnimacaoAtivada"></ion-icon>
         <ion-icon name="notifications-outline"></ion-icon>
       </div>
     </section>
@@ -32,7 +33,7 @@
   </section>
 
   <section id="categoria">
-    <swiper-container [slidesPerView]="2.5" [spaceBetween]="20">
+    <!-- <swiper-container [slidesPerView]="2.5" [spaceBetween]="20">
       <swiper-slide>
         <img src="assets/icon/login.png" />
         <ion-text>Login</ion-text>
@@ -45,7 +46,17 @@
         <img src="assets/icon/cards.png" />
         <ion-text>Card</ion-text>
       </swiper-slide>
+    </swiper-container> -->
+
+    <swiper-container [slidesPerView]="2.5" [spaceBetween]="20">
+      @for(item of categoriaCredencialList; track item.codePublic) {
+      <swiper-slide [style.background]="item.background">
+        <ion-icon [name]="item.icone"></ion-icon>
+        <ion-text>{{ item.descricao }}</ion-text>
+      </swiper-slide>
+      }
     </swiper-container>
+
   </section>
 
   <section id="cabecalho">
@@ -53,25 +64,25 @@
   </section>
 
   @for(item of credencialList; track item.codePublic) {
-    <section id="contas-recentes">
-      <div class="box-a column20">
-        <div class="icone">
-          <!-- <img [src]="item.imagem" /> -->
-           <div class="logomarca">
-            <ion-text>{{ getRecuperarNome(item) }}</ion-text>
-           </div>
+  <section id="contas-recentes">
+    <div class="box-a column20">
+      <div class="icone">
+        <!-- <img [src]="item.imagem" /> -->
+        <div class="logomarca">
+          <ion-text>{{ getRecuperarNome(item) }}</ion-text>
         </div>
       </div>
-      <div class="box-b column70">
-        <ion-text>
-          <b>{{ item.descricao }}</b>
-          <p>{{ item.identificador }}</p>
-        </ion-text>
-      </div>
-      <div class="box-c column10">
-        <ion-icon name="copy-outline" (click)="copiarSenha(item)"></ion-icon>
-      </div>
-    </section>
+    </div>
+    <div class="box-b column70">
+      <ion-text>
+        <b>{{ item.descricao }}</b>
+        <p>{{ item.identificador }}</p>
+      </ion-text>
+    </div>
+    <div class="box-c column10">
+      <ion-icon name="copy-outline" (click)="copiarSenha(item)"></ion-icon>
+    </div>
+  </section>
   }
 
 </ion-content>
