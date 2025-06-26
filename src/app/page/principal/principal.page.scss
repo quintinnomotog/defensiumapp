@@ -10,8 +10,11 @@
         align-items: center;
 
         ion-avatar {
-            padding: 0.2rem;
+            padding: 0.1rem;
             border: solid silver 3px;
+            img {
+                object-fit: cover;
+            }
         }
 
         ion-text {

@@ -10,11 +10,11 @@
 @import "@ionic/angular/css/flex-utils.css";
 // @import "@ionic/angular/css/palettes/dark.always.css";
 // @import "@ionic/angular/css/palettes/dark.class.css";
-@import '@ionic/angular/css/palettes/dark.system.css';
+// @import '@ionic/angular/css/palettes/dark.system.css';
 @import url("./theme/fonts.scss");
 
 * {
-    font-family: "Lexend";
+    font-family: "Poppins";
 }
 
 ion-header,
@@ -60,7 +60,7 @@ ion-content {
 
 .popover::part(content) {
     width: 90%;
-    height: 42dvh;
+    height: 57dvh;
     border-radius: 20px;
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
