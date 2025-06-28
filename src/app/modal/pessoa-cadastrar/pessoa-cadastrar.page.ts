@@ -200,6 +200,7 @@ import {
   ],
 })
 export class PessoaCadastrarPage implements OnInit {
+  
   public iconeList: string[] = [
     'add',
     'alarm',
