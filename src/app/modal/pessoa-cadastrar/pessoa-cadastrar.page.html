@@ -31,6 +31,18 @@
             <span></span>
         </div>
 
+        <div class="box-cor">
+            <div class="cores">
+                <ion-grid>
+                    <ion-row>
+                        <ion-col size="2" *ngFor="let item of corList">
+                            <div [style.background]="item" (click)="selecionarCor(item)" [class.selecionada]="corSelecionada === item"></div>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </div>
+        </div>
+
         <ion-button expand="block" disabled="true">Save</ion-button>
 
     </form>

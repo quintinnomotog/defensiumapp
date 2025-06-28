@@ -7,7 +7,7 @@ import {
   IonGrid,
   IonIcon,
   IonLabel,
-  IonRow
+  IonRow,
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { apps, globe } from 'ionicons/icons';
@@ -17,17 +17,18 @@ import { apps, globe } from 'ionicons/icons';
   templateUrl: './pessoa-cadastrar.page.html',
   styleUrls: ['./pessoa-cadastrar.page.scss'],
   standalone: true,
-  imports: [IonGrid, IonRow, 
+  imports: [
+    IonGrid,
+    IonRow,
     IonButton,
     IonIcon,
     IonLabel,
     CommonModule,
     FormsModule,
-    IonCol
+    IonCol,
   ],
 })
 export class PessoaCadastrarPage implements OnInit {
-  
   public iconeList: string[] = [
     'add',
     'alarm',
@@ -195,17 +196,44 @@ export class PessoaCadastrarPage implements OnInit {
     'woman',
   ];
 
+  public corList: string[] = [];
+
   public iconeSelecionado: string | null = null;
+
+  public corSelecionada: string | null = null;
 
   constructor() {
     addIcons({ apps, globe });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.gerarCoresAleatorias();
+    console.log(this.corList);
+  }
 
   public selecionarIcone(icone: string) {
     this.iconeSelecionado = icone;
     console.log(this.iconeSelecionado);
+  }
+
+  private getCor(): string {
+    const r = Math.floor(Math.random() * 80) + 160;
+    const g = Math.floor(Math.random() * 80) + 160;
+    const b = Math.floor(Math.random() * 80) + 160;
+    const cor = (value: number) => value.toString(16).padStart(2, '0');
+    return `#${cor(r)}${cor(g)}${cor(b)}`;
+  }
+
+  public gerarCoresAleatorias() {
+    for (let index = 0; index < 12; index++) {
+      this.corList.push(this.getCor());
+    }
+  }
+
+  public selecionarCor(cor: string) {
+    this.corSelecionada = cor;
+    console.log(this.corSelecionada);
+    
   }
 
 }

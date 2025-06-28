@@ -78,7 +78,7 @@
 
                             ion-icon.selecionado {
                                 background: #9290f3;
-                                color: white;                                
+                                color: white;
                             }
                         }
                     }
@@ -101,6 +101,37 @@
                 width: 100%;
                 height: 1px;
                 border: silver 1px solid;
+            }
+        }
+
+        .box-cor {
+            .cores {
+                ion-grid {
+                    ion-row {
+                        ion-col {
+                            div {
+                                width: 60px; 
+                                height: 60px;
+                                border-radius: 50%;
+                                cursor: pointer;
+                                transition: background 0.3s;
+                            }
+                        }
+                        div:hover {
+                            border: solid #9290f3 2.4px;                          
+                        }
+                        div.selecionada {
+                            border: solid #9290f3 2.4px;
+                        }
+                    }
+                }
+                // width: 100%;
+                // padding-top: 100%;
+                // border-radius: 50%;
+                // border: 2px solid transparent;
+                // cursor: pointer;
+                // transition: transform 0.2s, border 0.2s;
+                // position: relative;
             }
         }
 
