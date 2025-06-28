@@ -1,9 +1,9 @@
 <section id="popover">
-    <form>
+    <form [formGroup]="categoriaCredencialFormGroup" (ngSubmit)="onCreate()">
 
         <div class="formulario-input">
             <ion-label>Nome da Categoria</ion-label>
-            <input type="text" placeholder="Informe o nome da Categoria" />
+            <input type="text" placeholder="Informe o nome da Categoria" formControlName="descricao" />
             <ion-icon name="apps"></ion-icon>
         </div>
 
@@ -43,7 +43,8 @@
             </div>
         </div>
 
-        <ion-button expand="block" disabled="true">Save</ion-button>
+        <ion-button type="submit" expand="block" [disabled]="!categoriaCredencialFormGroup.valid">Save</ion-button>
+
 
     </form>
 </section>
