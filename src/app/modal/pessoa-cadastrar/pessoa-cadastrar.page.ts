@@ -4,8 +4,11 @@ import { FormsModule } from '@angular/forms';
 import {
   IonButton,
   IonCol,
+  IonGrid,
   IonIcon,
-  IonLabel, IonList, IonRow, IonGrid } from '@ionic/angular/standalone';
+  IonLabel,
+  IonRow
+} from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { apps, globe } from 'ionicons/icons';
 
@@ -14,13 +17,12 @@ import { apps, globe } from 'ionicons/icons';
   templateUrl: './pessoa-cadastrar.page.html',
   styleUrls: ['./pessoa-cadastrar.page.scss'],
   standalone: true,
-  imports: [IonGrid, IonRow, IonList, 
+  imports: [IonGrid, IonRow, 
     IonButton,
     IonIcon,
     IonLabel,
     CommonModule,
     FormsModule,
-    IonList,
     IonCol
   ],
 })
@@ -193,9 +195,17 @@ export class PessoaCadastrarPage implements OnInit {
     'woman',
   ];
 
+  public iconeSelecionado: string | null = null;
+
   constructor() {
     addIcons({ apps, globe });
   }
 
   ngOnInit() {}
+
+  public selecionarIcone(icone: string) {
+    this.iconeSelecionado = icone;
+    console.log(this.iconeSelecionado);
+  }
+
 }

@@ -18,7 +18,7 @@
                 <ion-grid>
                     <ion-row>
                         <ion-col size="1" *ngFor="let item of iconeList">
-                            <ion-icon [name]="item"></ion-icon>
+                            <ion-icon [name]="item" [class.selecionado]="iconeSelecionado === item" (click)="selecionarIcone(item)"></ion-icon>
                         </ion-col>
                     </ion-row>
                 </ion-grid>

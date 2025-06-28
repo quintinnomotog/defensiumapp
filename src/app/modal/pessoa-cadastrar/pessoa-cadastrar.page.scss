@@ -68,10 +68,17 @@
                                 border-radius: 2rem;
                                 padding: 0.3rem;
                                 font-size: 1.1rem;
+                                transition: background 0.3s;
                             }
+
                             ion-icon:hover {
                                 background: #9290f3;
                                 color: white;
+                            }
+
+                            ion-icon.selecionado {
+                                background: #9290f3;
+                                color: white;                                
                             }
                         }
                     }
