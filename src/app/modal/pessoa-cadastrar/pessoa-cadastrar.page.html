@@ -2,21 +2,33 @@
     <form>
 
         <div class="formulario-input">
-            <ion-label>Site/App Name</ion-label>
-            <input type="text" placeholder="Enter Name" />
+            <ion-label>Nome da Categoria</ion-label>
+            <input type="text" placeholder="Informe o nome da Categoria" />
             <ion-icon name="apps"></ion-icon>
         </div>
 
         <div class="or">
             <span></span>
-            <ion-label>OR</ion-label>
+            <ion-label>Icones</ion-label>
             <span></span>
         </div>
 
-        <div class="formulario-input">
-            <ion-label>Site Link</ion-label>
-            <input type="text" placeholder="Past Link Here" />
-            <ion-icon name="globe"></ion-icon>
+        <div class="box-icone">
+            <div class="icones">
+                <ion-grid>
+                    <ion-row>
+                        <ion-col size="1" *ngFor="let item of iconeList">
+                            <ion-icon [name]="item"></ion-icon>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </div>
+        </div>
+
+        <div class="or">
+            <span></span>
+            <ion-label>Cor</ion-label>
+            <span></span>
         </div>
 
         <ion-button expand="block" disabled="true">Save</ion-button>

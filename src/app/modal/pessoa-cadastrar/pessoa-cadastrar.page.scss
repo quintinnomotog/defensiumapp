@@ -1,5 +1,6 @@
 #popover {
     padding: 1rem;
+
     form {
 
         .formulario-input {
@@ -38,7 +39,7 @@
 
             ion-icon {
                 position: absolute;
-                margin-top: 3.4rem;
+                margin-top: 3.7rem;
                 left: 1.1rem;
                 color: #6d7178;
                 font-size: 1.4rem;
@@ -52,6 +53,28 @@
 
                 ion-icon {
                     font-size: 1.7rem;
+                }
+            }
+        }
+
+        .box-icone {
+            .icones {
+                ion-grid {
+                    ion-row {
+                        ion-col {
+                            ion-icon {
+                                border: solid #6d7178 2px;
+                                cursor: pointer;
+                                border-radius: 2rem;
+                                padding: 0.3rem;
+                                font-size: 1.1rem;
+                            }
+                            ion-icon:hover {
+                                background: #9290f3;
+                                color: white;
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -81,6 +104,6 @@
             margin: auto;
             margin-top: 2rem;
         }
-        
+
     }
 }
