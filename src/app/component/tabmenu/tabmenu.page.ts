@@ -31,7 +31,6 @@ export class TabmenuPage implements OnInit {
     });
     await modalCredencialCadastro.present();
     const { role } = await modalCredencialCadastro.onWillDismiss();
-    console.log('Primária fechada com role:', role);
   }
 
 }

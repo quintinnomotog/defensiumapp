@@ -181,6 +181,7 @@ import {
   wifi,
   woman,
 } from 'ionicons/icons';
+import { CategoriaCredencialService } from 'src/app/service/categoria-credencial.service';
 
 @Component({
   selector: 'app-pessoa-cadastrar',
@@ -200,7 +201,7 @@ import {
   ],
 })
 export class PessoaCadastrarPage implements OnInit {
-  
+
   public iconeList: string[] = [
     'add',
     'alarm',
@@ -377,6 +378,8 @@ export class PessoaCadastrarPage implements OnInit {
   public categoriaCredencialFormGroup!: FormGroup;
 
   private formBuilder = inject(FormBuilder);
+
+  private categoriaCredencialService = inject(CategoriaCredencialService);
 
   constructor() {
     addIcons({
@@ -585,8 +588,15 @@ export class PessoaCadastrarPage implements OnInit {
 
   public onCreate() {
     if (this.categoriaCredencialFormGroup.valid) {
-      const categoriaCredencialEntity = this.categoriaCredencialFormGroup.value;
-      console.log(categoriaCredencialEntity);
+      this.categoriaCredencialService.create(this.categoriaCredencialFormGroup.value).subscribe({
+        next: (response) => {
+          console.log("Dados Cadastrados com Sucesso!");
+        },
+        error: (response) => {
+          console.error("Falha ao tentar cadastrar uma nova Categoria de Credencial!");
+          
+        }
+      });
     }
   }
 

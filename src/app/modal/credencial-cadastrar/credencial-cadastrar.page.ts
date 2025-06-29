@@ -84,7 +84,6 @@ export class CredencialCadastrarPage implements OnInit {
     await modal.present();
 
     const { role } = await modal.onWillDismiss();
-    console.log('Secundária fechada com role:', role);
 
     if (role !== 'cancel') {
       // Reabre a primária
@@ -179,7 +178,6 @@ export class CredencialCadastrarPage implements OnInit {
     this.isLoading = true;
     this.categoriaCredencialService.getFindAll().subscribe({
       next: async (response) => {
-        console.log(response);
         this.categoriaCredencialList = response;
         this.isLoading = false;
       },
@@ -190,7 +188,6 @@ export class CredencialCadastrarPage implements OnInit {
   }
 
   public selecionarCategoriaCredencial(item: any) {
-    console.log("ITEM: ", item);
     this.credencialFormGroup.patchValue({
       categoriaCredencialEntity: item.code
     });

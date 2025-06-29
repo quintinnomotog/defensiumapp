@@ -169,7 +169,6 @@ export class PrincipalPage implements OnInit {
             return categoriaCredencial;
           }
         );
-        console.log(this.categoriaCredencialList);
       },
       error: (response) => {
         console.error(
@@ -184,7 +183,6 @@ export class PrincipalPage implements OnInit {
     const g = Math.floor(Math.random() * 80) + 150;
     const b = Math.floor(Math.random() * 80) + 150;
     const cor = `#${r.toString(16)}${g.toString(16)}${b.toString(16)}`;
-    console.log(cor);    
     return cor;
   }
 
