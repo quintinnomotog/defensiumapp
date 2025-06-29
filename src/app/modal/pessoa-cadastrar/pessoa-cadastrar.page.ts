@@ -14,6 +14,9 @@ import {
   IonIcon,
   IonLabel,
   IonRow,
+  IonAccordion,
+  IonAccordionGroup,
+  IonItem,
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import {
@@ -182,6 +185,7 @@ import {
   woman,
 } from 'ionicons/icons';
 import { CategoriaCredencialService } from 'src/app/service/categoria-credencial.service';
+import { PopoverController, ToastController } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-pessoa-cadastrar',
@@ -189,6 +193,9 @@ import { CategoriaCredencialService } from 'src/app/service/categoria-credencial
   styleUrls: ['./pessoa-cadastrar.page.scss'],
   standalone: true,
   imports: [
+    IonItem,
+    IonAccordionGroup,
+    IonAccordion,
     IonGrid,
     IonRow,
     IonButton,
@@ -201,7 +208,6 @@ import { CategoriaCredencialService } from 'src/app/service/categoria-credencial
   ],
 })
 export class PessoaCadastrarPage implements OnInit {
-
   public iconeList: string[] = [
     'add',
     'alarm',
@@ -380,6 +386,10 @@ export class PessoaCadastrarPage implements OnInit {
   private formBuilder = inject(FormBuilder);
 
   private categoriaCredencialService = inject(CategoriaCredencialService);
+
+  private popoverController = inject(PopoverController);
+
+  private toastController = inject(ToastController);
 
   constructor() {
     addIcons({
@@ -586,18 +596,33 @@ export class PessoaCadastrarPage implements OnInit {
     });
   }
 
-  public onCreate() {
+  public async onCreate() {
     if (this.categoriaCredencialFormGroup.valid) {
-      this.categoriaCredencialService.create(this.categoriaCredencialFormGroup.value).subscribe({
-        next: (response) => {
-          console.log("Dados Cadastrados com Sucesso!");
-        },
-        error: (response) => {
-          console.error("Falha ao tentar cadastrar uma nova Categoria de Credencial!");
-          
-        }
-      });
+      this.categoriaCredencialService
+        .create(this.categoriaCredencialFormGroup.value)
+        .subscribe({
+          next: (response) => {
+            console.log('Dados Cadastrados com Sucesso!');
+            this.apresentarToastSucesso();
+            this.popoverController.dismiss();
+          },
+          error: (response) => {
+            console.error(
+              'Falha ao tentar cadastrar uma nova Categoria de Credencial!'
+            );
+          },
+        });
     }
+  }
+
+  private async apresentarToastSucesso() {
+    const toast = await this.toastController.create({
+      message: 'Categoria Cadastrada com Sucesso!',
+      color: 'success',
+      duration: 3000,
+      position: 'top'
+    });
+    return toast.present();
   }
 
 }
