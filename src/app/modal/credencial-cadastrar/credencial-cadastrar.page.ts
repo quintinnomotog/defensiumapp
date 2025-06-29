@@ -1,21 +1,21 @@
 import { CommonModule } from '@angular/common';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { IonButton, IonContent, IonHeader, IonIcon, IonTitle, IonToolbar, ModalController, PopoverController, ToastController } from '@ionic/angular/standalone';
+import { IonButton, IonContent, IonIcon, ModalController, PopoverController, ToastController } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { add, checkmarkCircleOutline, closeCircleOutline, documentTextOutline, keyOutline, lockClosedOutline, mailOutline, personOutline, reloadOutline, eyeOutline, eyeOffOutline } from 'ionicons/icons';
+import { add, checkmarkCircleOutline, closeCircleOutline, documentTextOutline, eyeOffOutline, eyeOutline, keyOutline, lockClosedOutline, mailOutline, personOutline, reloadOutline } from 'ionicons/icons';
 import { CredencialModel } from 'src/app/model/credencial.model';
 import { CategoriaCredencialService } from 'src/app/service/categoria-credencial.service';
 import { CredencialService } from 'src/app/service/credencial.service';
-import { PessoaCadastrarPage } from '../pessoa-cadastrar/pessoa-cadastrar.page';
 import { GeradorSenhaService } from 'src/app/service/gerador-senha.service';
+import { PessoaCadastrarPage } from '../pessoa-cadastrar/pessoa-cadastrar.page';
 
 @Component({
   selector: 'app-credencial-cadastrar',
   templateUrl: './credencial-cadastrar.page.html',
   styleUrls: ['./credencial-cadastrar.page.scss'],
   standalone: true,
-  imports: [ReactiveFormsModule, IonButton, IonIcon, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule],
+  imports: [ReactiveFormsModule, IonButton, IonIcon, IonContent, CommonModule, FormsModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class CredencialCadastrarPage implements OnInit {

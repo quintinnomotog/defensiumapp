@@ -36,41 +36,45 @@
 
     <form [formGroup]="credencialFormGroup" (ngSubmit)="onCreate()">
 
-      <div class="formulario-input">
-        <ion-label>Username</ion-label>
-        <input type="text" placeholder="Enter Username" maxlength="100" />
-        <ion-icon name="person-outline"></ion-icon>
-      </div>
+      <div id="section-website-aplicativo">
 
-      <div class="formulario-input">
-        <ion-label>E-mail</ion-label>
-        <input type="text" placeholder="Enter E-mail Address" maxlength="100" autocapitalize="off"
-          formControlName="identificador" [class.campo-invalido]="isCampoInvalido('identificador')" />
-        <ion-icon name="mail-outline"></ion-icon>
-        <small *ngIf="isCampoInvalido('identificador')">E-mail Inválido!</small>
-      </div>
-
-      <div class="formulario-input">
-        <ion-label>Descrição</ion-label>
-        <input type="text" placeholder="Descrição" maxlength="100" formControlName="descricao"
-          [class.campo-invalido]="isCampoInvalido('descricao')" />
-        <ion-icon name="document-text-outline"></ion-icon>
-        <small *ngIf="isCampoInvalido('descricao')">Descrição Inválida!</small>
-      </div>
-
-      <!-- FIXME: Esse campo fica atrás do teclado no Android, deve-se ajustar conforme o usuário digita -->
-      <div class="formulario-input">
-        <ion-label>Password</ion-label>
-        <input [type]="tipoInpuSenha" placeholder="Enter Password" maxlength="60" formControlName="senha"
-          [class.campo-invalido]="isCampoInvalido('senha')" />
-        <ion-icon name="lock-closed-outline"></ion-icon>
-        <div (click)="gerarSenha()" class="icone-secundario">
-          <ion-icon name="reload-outline"></ion-icon>
+        <div class="formulario-input">
+          <ion-label>Instituição</ion-label>
+          <input type="text" placeholder="Exemplo: Google, Microsoft etc" maxlength="100" />
+          <ion-icon name="person-outline"></ion-icon>
         </div>
-        <div (click)="apresentarOcultarSenha()" class="icone-terceario">
-          <ion-icon [name]="iconeVerificarSenha"></ion-icon>
+
+        <div class="formulario-input">
+          <ion-label>Descrição</ion-label>
+          <input type="text" placeholder="Descrição" maxlength="100" formControlName="descricao"
+            [class.campo-invalido]="isCampoInvalido('descricao')" />
+          <ion-icon name="document-text-outline"></ion-icon>
+          <small *ngIf="isCampoInvalido('descricao')">Descrição Inválida!</small>
         </div>
-        <small *ngIf="isCampoInvalido('senha')">Senha Inválida!</small>
+
+        <div *ngIf="credencialFormGroup.get('categoriaCredencialEntity')?.value === 'Wi-Fi'" class="formulario-input">
+          <ion-label>E-mail</ion-label>
+          <input type="text" placeholder="Enter E-mail Address" maxlength="100" autocapitalize="off"
+            formControlName="identificador" [class.campo-invalido]="isCampoInvalido('identificador')" />
+          <ion-icon name="mail-outline"></ion-icon>
+          <small *ngIf="isCampoInvalido('identificador')">E-mail Inválido!</small>
+        </div>
+
+        <!-- FIXME: Esse campo fica atrás do teclado no Android, deve-se ajustar conforme o usuário digita -->
+        <div class="formulario-input">
+          <ion-label>Password</ion-label>
+          <input [type]="tipoInpuSenha" placeholder="Enter Password" maxlength="60" formControlName="senha"
+            [class.campo-invalido]="isCampoInvalido('senha')" />
+          <ion-icon name="lock-closed-outline"></ion-icon>
+          <div (click)="gerarSenha()" class="icone-secundario">
+            <ion-icon name="reload-outline"></ion-icon>
+          </div>
+          <div (click)="apresentarOcultarSenha()" class="icone-terceario">
+            <ion-icon [name]="iconeVerificarSenha"></ion-icon>
+          </div>
+          <small *ngIf="isCampoInvalido('senha')">Senha Inválida!</small>
+        </div>
+
       </div>
 
       <ion-button type="submit" expand="block" [disabled]="!credencialFormGroup.valid">Save</ion-button>
