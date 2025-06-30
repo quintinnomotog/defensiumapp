@@ -43,6 +43,12 @@ import {
   settings,
   terminal,
   cloud,
+  lockClosedOutline,
+  cardOutline,
+  cashOutline,
+  wifiOutline,
+  serverOutline,
+  keyOutline,
 } from 'ionicons/icons';
 import { CredencialService } from 'src/app/service/credencial.service';
 import { CategoriaCredencialService } from '../../service/categoria-credencial.service';
@@ -54,13 +60,10 @@ import { CategoriaCredencialService } from '../../service/categoria-credencial.s
   standalone: true,
   imports: [
     HttpClientModule,
-    IonSearchbar,
     IonText,
     IonAvatar,
-    IonButton,
     IonContent,
     IonHeader,
-    IonTitle,
     IonToolbar,
     CommonModule,
     FormsModule,
@@ -69,6 +72,7 @@ import { CategoriaCredencialService } from '../../service/categoria-credencial.s
   providers: [CredencialService],
 })
 export class PrincipalPage implements OnInit {
+  
   private toastController = inject(ToastController);
 
   private credencialService = inject(CredencialService);
@@ -106,6 +110,12 @@ export class PrincipalPage implements OnInit {
       settings,
       terminal,
       cloud,
+      lockClosedOutline,
+      cardOutline,
+      cashOutline,
+      wifiOutline,
+      serverOutline,
+      keyOutline,
     });
   }
 
@@ -161,14 +171,16 @@ export class PrincipalPage implements OnInit {
   private recuperarCategoriaCredencial() {
     this.categoriaCredencialService.getFindAll().subscribe({
       next: (response) => {
-        this.categoriaCredencialList = response.map(
-          (categoriaCredencial: any) => {
-            categoriaCredencial.icone = this.getIconeAleatorio();
-            categoriaCredencial.corIcone = this.getCorPorCategoria();
-            categoriaCredencial.background = this.getCorPorCategoria();
-            return categoriaCredencial;
-          }
-        );
+        this.categoriaCredencialList = response;
+        console.log(this.categoriaCredencialList);
+        // .map(
+        //   (categoriaCredencial: any) => {
+        //     categoriaCredencial.icone = this.getIconeAleatorio();
+        //     categoriaCredencial.corIcone = this.getCorPorCategoria();
+        //     categoriaCredencial.background = this.getCorPorCategoria();
+        //     return categoriaCredencial;
+        //   }
+        // );
       },
       error: (response) => {
         console.error(

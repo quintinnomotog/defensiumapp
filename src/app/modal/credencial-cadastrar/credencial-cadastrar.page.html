@@ -52,12 +52,18 @@
           <small *ngIf="isCampoInvalido('descricao')">Descrição Inválida!</small>
         </div>
 
-        <div *ngIf="credencialFormGroup.get('categoriaCredencialEntity')?.value === 'Wi-Fi'" class="formulario-input">
+        <div *ngIf="credencialFormGroup.get('categoriaCredencialEntity')?.value === 2" class="formulario-input">
           <ion-label>E-mail</ion-label>
-          <input type="text" placeholder="Enter E-mail Address" maxlength="100" autocapitalize="off"
+          <input type="text" placeholder="E-mail, telefone ou nome de usuário" maxlength="100" autocapitalize="off"
             formControlName="identificador" [class.campo-invalido]="isCampoInvalido('identificador')" />
           <ion-icon name="mail-outline"></ion-icon>
           <small *ngIf="isCampoInvalido('identificador')">E-mail Inválido!</small>
+        </div>
+
+        <div class="formulario-input">
+          <ion-label>Link</ion-label>
+          <input type="text" placeholder="http://www.domain.com" maxlength="100" />
+          <ion-icon name="person-outline"></ion-icon>
         </div>
 
         <!-- FIXME: Esse campo fica atrás do teclado no Android, deve-se ajustar conforme o usuário digita -->
