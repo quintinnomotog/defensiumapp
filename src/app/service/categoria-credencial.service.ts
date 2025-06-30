@@ -11,7 +11,7 @@ export class CategoriaCredencialService {
 
   private httpClient = inject(HttpClient);
 
-  private ENDPOINT = "/defensium/categoria-credencial";
+  private ENDPOINT = "/categoria-credencial";
 
   constructor() { }
 

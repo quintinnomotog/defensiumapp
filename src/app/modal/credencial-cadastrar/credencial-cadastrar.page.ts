@@ -39,6 +39,7 @@ import { CategoriaCredencialService } from 'src/app/service/categoria-credencial
 import { CredencialService } from 'src/app/service/credencial.service';
 import { GeradorSenhaService } from 'src/app/service/gerador-senha.service';
 import { PessoaCadastrarPage } from '../pessoa-cadastrar/pessoa-cadastrar.page';
+import { PessoaService } from 'src/app/service/pessoa.service';
 
 @Component({
   selector: 'app-credencial-cadastrar',
@@ -78,29 +79,15 @@ export class CredencialCadastrarPage implements OnInit {
 
   private geradorSenhaService = inject(GeradorSenhaService);
 
-  private instituicaoList: any[] = [
-    { code: 1, nome: 'Google' },
-    { code: 2, nome: 'Microsoft' },
-    { code: 3, nome: 'Dribbble' },
-    { code: 4, nome: 'Amazon' },
-    { code: 5, nome: 'Apple' },
-    { code: 6, nome: 'Netflix' },
-    { code: 7, nome: 'Spotify' },
-    { code: 8, nome: 'Facebook' },
-    { code: 9, nome: 'Twitter' },
-    { code: 10, nome: 'LinkedIn' },
-    { code: 11, nome: 'GitHub' },
-    { code: 12, nome: 'Adobe' },
-    { code: 13, nome: 'IBM' },
-    { code: 14, nome: 'Salesforce' },
-    { code: 15, nome: 'Oracle' },
-  ];
-
   public isApresentarListaResultadoPesquisa: boolean = false;
 
   public nomeIntituicaoPesquisa: string = '';
 
   public instituicaoFiltradaList: any[] = [];
+
+  private pessoaService = inject(PessoaService);
+
+  public pessoaList: any[] = [];
 
   constructor(private formBuilder: FormBuilder) {
     addIcons({
@@ -119,7 +106,9 @@ export class CredencialCadastrarPage implements OnInit {
     this.configurarFormulario();
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.recuperarPessoa();
+  }
 
   ionViewDidEnter() {
     this.getCategoriaCredencial();
@@ -279,7 +268,7 @@ export class CredencialCadastrarPage implements OnInit {
     this.credencialFormGroup.get('nomeInstituicao')?.valueChanges.subscribe((valorDigitado: string) => {
         if (valorDigitado && valorDigitado.length > 1) {
           const termo = valorDigitado.toLowerCase();
-          this.instituicaoFiltradaList = this.instituicaoList.filter((item) =>
+          this.instituicaoFiltradaList = this.pessoaList.filter((item) =>
             item.nome.toLowerCase().includes(termo)
           );
           this.isApresentarListaResultadoPesquisa = this.instituicaoFiltradaList.length > 0;
@@ -296,7 +285,19 @@ export class CredencialCadastrarPage implements OnInit {
       nomeInstituicao: item.nome,
     });
     this.isApresentarListaResultadoPesquisa = false;
-    console.log(this.credencialFormGroup.value);
+  }
+
+  public async recuperarPessoa() {
+    await this.pessoaService.getFindAll().subscribe({
+      next: (response) => {
+        debugger
+        this.pessoaList = response;
+        console.log(this.pessoaList);        
+      },
+      error: (response) => {
+        console.error("Falha ao tentar recuperar a lista de Pessoas!");
+      }
+    });
   }
   
 }
