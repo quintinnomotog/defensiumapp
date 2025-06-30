@@ -172,7 +172,6 @@ export class PrincipalPage implements OnInit {
     this.categoriaCredencialService.getFindAll().subscribe({
       next: (response) => {
         this.categoriaCredencialList = response;
-        console.log(this.categoriaCredencialList);
         // .map(
         //   (categoriaCredencial: any) => {
         //     categoriaCredencial.icone = this.getIconeAleatorio();

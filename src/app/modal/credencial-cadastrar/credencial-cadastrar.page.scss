@@ -178,6 +178,25 @@ ion-content {
                 left: 1.5rem;
                 font-size: 0.8rem;
             }
+
+            .resultado-pesquisa {
+                position: absolute;
+                margin-top: 6.7rem;
+                // border: solid red 2px;
+                width: 100%;
+                z-index: 999;
+                ion-list {        
+                    background: #9290f3;
+                    border-top-left-radius: 5px;    
+                    border-top-right-radius: 5px;
+                    ion-item {
+                        --background: #9290f3;
+                        font-weight: bold;
+                        cursor: pointer;
+                        color: white;
+                    }
+                }
+            }
         }
 
         ion-button {

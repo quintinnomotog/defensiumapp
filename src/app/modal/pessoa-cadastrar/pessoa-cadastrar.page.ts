@@ -602,7 +602,7 @@ export class PessoaCadastrarPage implements OnInit {
         .create(this.categoriaCredencialFormGroup.value)
         .subscribe({
           next: (response) => {
-            console.log('Dados Cadastrados com Sucesso!');
+            console.info('Dados Cadastrados com Sucesso!');
             this.apresentarToastSucesso();
             this.popoverController.dismiss();
           },

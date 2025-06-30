@@ -40,8 +40,15 @@
 
         <div class="formulario-input">
           <ion-label>Instituição</ion-label>
-          <input type="text" placeholder="Exemplo: Google, Microsoft etc" maxlength="100" />
+
+          <input type="text" placeholder="Exemplo: Google, Microsoft etc" formControlName="nomeInstituicao" (ngModelChange)="pesquisarInstituicao($event)" autocomplete="off" maxlength="100" />
+
           <ion-icon name="person-outline"></ion-icon>
+          <div *ngIf="isApresentarListaResultadoPesquisa" class="resultado-pesquisa">
+            <ion-list lines="none">
+              <ion-item *ngFor="let item of instituicaoFiltradaList" (click)="selecionarInstituicao(item)">{{ item.nome }}</ion-item>
+            </ion-list>
+          </div>
         </div>
 
         <div class="formulario-input">
