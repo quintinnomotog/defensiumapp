@@ -116,14 +116,13 @@ export class CredencialCadastrarPage implements OnInit {
 
   public configurarFormulario() {
     this.credencialFormGroup = this.formBuilder.group({
-      codigoInstituicao: ['', Validators.required],
-      nomeInstituicao: ['', Validators.required],
-      categoriaCredencialEntity: ['', Validators.required],
+      nomeInstituicao: ['Google', Validators.required],
+      categoriaCredencialEntity: ['2', Validators.required],
       pessoaEntity: [1, Validators.required],
-      identificador: ['', [Validators.required, Validators.email]],
-      senha: ['', Validators.required],
-      descricao: ['', Validators.required],
-      link: [''],
+      identificador: ['repository.desenvolvimento@gmail.com', [Validators.required]],
+      senha: ['b#PMOR,2LuGuFyz5>a87', Validators.required],
+      descricao: ['Conta Google', Validators.required],
+      link: ['https://accounts.google.com/'],
       observacao: [''],
     });
   }
@@ -224,7 +223,7 @@ export class CredencialCadastrarPage implements OnInit {
     return toast.present();
   }
 
-  private redirecionarTela() {}
+  private redirecionarTela() { }
 
   private getFecharModal() {
     this.modalController.dismiss(null, 'salvo');
@@ -241,6 +240,12 @@ export class CredencialCadastrarPage implements OnInit {
       next: async (response) => {
         this.categoriaCredencialList = response;
         this.isLoading = false;
+        const categoriaPadrao = this.categoriaCredencialList.find(categoriaFind => categoriaFind.code === 2);
+        if (categoriaPadrao) {
+          this.credencialFormGroup.patchValue({
+            categoriaCredencialEntity: categoriaPadrao.code
+          });
+        }
       },
       error: async (response) => {
         console.error('Erro ao realizar a requisição:', response);
@@ -266,22 +271,21 @@ export class CredencialCadastrarPage implements OnInit {
 
   public pesquisarInstituicao(event: any) {
     this.credencialFormGroup.get('nomeInstituicao')?.valueChanges.subscribe((valorDigitado: string) => {
-        if (valorDigitado && valorDigitado.length > 1) {
-          const termo = valorDigitado.toLowerCase();
-          this.instituicaoFiltradaList = this.pessoaList.filter((item) =>
-            item.nome.toLowerCase().includes(termo)
-          );
-          this.isApresentarListaResultadoPesquisa = this.instituicaoFiltradaList.length > 0;
-        } else {
-          this.instituicaoFiltradaList = [];
-          this.isApresentarListaResultadoPesquisa = false;
-        }
-      });
+      if (valorDigitado && valorDigitado.length > 1) {
+        const termo = valorDigitado.toLowerCase();
+        this.instituicaoFiltradaList = this.pessoaList.filter((item) =>
+          item.nome.toLowerCase().includes(termo)
+        );
+        this.isApresentarListaResultadoPesquisa = this.instituicaoFiltradaList.length > 0;
+      } else {
+        this.instituicaoFiltradaList = [];
+        this.isApresentarListaResultadoPesquisa = false;
+      }
+    });
   }
 
   public selecionarInstituicao(item: any) {
     this.credencialFormGroup.patchValue({
-      codigoInstituicao: item.code,
       nomeInstituicao: item.nome,
     });
     this.isApresentarListaResultadoPesquisa = false;
@@ -292,12 +296,12 @@ export class CredencialCadastrarPage implements OnInit {
       next: (response) => {
         debugger
         this.pessoaList = response;
-        console.log(this.pessoaList);        
+        console.log(this.pessoaList);
       },
       error: (response) => {
         console.error("Falha ao tentar recuperar a lista de Pessoas!");
       }
     });
   }
-  
+
 }
