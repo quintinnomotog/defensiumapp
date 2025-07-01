@@ -116,13 +116,13 @@ export class CredencialCadastrarPage implements OnInit {
 
   public configurarFormulario() {
     this.credencialFormGroup = this.formBuilder.group({
-      nomeInstituicao: ['Google', Validators.required],
+      nomeInstituicao: ['', Validators.required],
       categoriaCredencialEntity: ['2', Validators.required],
       pessoaEntity: [1, Validators.required],
-      identificador: ['repository.desenvolvimento@gmail.com', [Validators.required]],
-      senha: ['b#PMOR,2LuGuFyz5>a87', Validators.required],
-      descricao: ['Conta Google', Validators.required],
-      link: ['https://accounts.google.com/'],
+      identificador: ['', [Validators.required]],
+      senha: ['', Validators.required],
+      descricao: ['', Validators.required],
+      link: [''],
       observacao: [''],
     });
   }

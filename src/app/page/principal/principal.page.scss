@@ -125,12 +125,14 @@
 
             ion-icon {
                 font-size: 2rem;
+                color: white;
             }
 
             ion-text {
                 margin-top: 1rem;
                 font-weight: bold;
-                color: #29333C;
+                // color: #29333C;
+                color: rgb(255, 255, 255);
             }
         }
 
