@@ -75,7 +75,6 @@
     <ion-item>
       <ion-row class="ion-align-items-center" style="width: 100%;">
         
-        <!-- Ícone circular à esquerda -->
         <ion-col size="2">
           <div class="icone">
             <div class="logomarca">
@@ -84,7 +83,6 @@
           </div>
         </ion-col>
 
-        <!-- Dados da credencial -->
         <ion-col size="8">
           <ion-text class="dados-credencial">
             <b>{{ item.nomePessoa }}</b>
@@ -92,7 +90,6 @@
           </ion-text>
         </ion-col>
 
-        <!-- Ícone de copiar -->
         <ion-col size="2" class="ion-text-end">
           <ion-icon name="copy-outline" (click)="copiarSenha(item)"></ion-icon>
         </ion-col>
