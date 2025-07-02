@@ -118,10 +118,10 @@ export class CredencialCadastrarPage implements OnInit {
     this.credencialFormGroup = this.formBuilder.group({
       nomeInstituicao: ['', Validators.required],
       categoriaCredencialEntity: ['2', Validators.required],
-      pessoaEntity: [1, Validators.required],
+      pessoaEntity: [""],
       identificador: ['', [Validators.required]],
       senha: ['', Validators.required],
-      descricao: ['', Validators.required],
+      descricao: [''],
       link: [''],
       observacao: [''],
     });
@@ -192,6 +192,7 @@ export class CredencialCadastrarPage implements OnInit {
       },
       pessoaEntity: {
         code: this.credencialFormGroup.get('pessoaEntity')?.value,
+        nome: this.credencialFormGroup.get("nomeInstituicao")?.value,
       },
       descricao: this.credencialFormGroup.get('descricao')?.value,
       link: this.credencialFormGroup.get('link')?.value,
@@ -271,7 +272,7 @@ export class CredencialCadastrarPage implements OnInit {
 
   public pesquisarInstituicao(event: any) {
     this.credencialFormGroup.get('nomeInstituicao')?.valueChanges.subscribe((valorDigitado: string) => {
-      if (valorDigitado && valorDigitado.length > 1) {
+      if (valorDigitado && valorDigitado.length >= 1) {
         const termo = valorDigitado.toLowerCase();
         this.instituicaoFiltradaList = this.pessoaList.filter((item) =>
           item.nome.toLowerCase().includes(termo)

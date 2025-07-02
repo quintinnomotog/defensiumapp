@@ -39,7 +39,7 @@
       <div id="section-website-aplicativo">
 
         <div class="formulario-input">
-          <ion-label>Instituição</ion-label>
+          <ion-label>Instituição <sup>*</sup></ion-label>
 
           <input type="text" placeholder="Exemplo: Google, Microsoft etc" formControlName="nomeInstituicao" (ngModelChange)="pesquisarInstituicao($event)" autocomplete="off" maxlength="100" />
 
@@ -60,7 +60,7 @@
         </div>
 
         <div *ngIf="credencialFormGroup.get('categoriaCredencialEntity')?.value === 2" class="formulario-input">
-          <ion-label>E-mail</ion-label>
+          <ion-label>Usuário <sup>*</sup></ion-label>
           <input type="text" placeholder="E-mail, telefone ou nome de usuário" maxlength="100" autocapitalize="off"
             formControlName="identificador" [class.campo-invalido]="isCampoInvalido('identificador')" />
           <ion-icon name="mail-outline"></ion-icon>
@@ -69,7 +69,7 @@
 
         <!-- FIXME: Esse campo fica atrás do teclado no Android, deve-se ajustar conforme o usuário digita -->
         <div class="formulario-input">
-          <ion-label>Password</ion-label>
+          <ion-label>Senha <sup>*</sup></ion-label>
           <input [type]="tipoInpuSenha" placeholder="Enter Password" maxlength="60" formControlName="senha"
             [class.campo-invalido]="isCampoInvalido('senha')" />
           <ion-icon name="lock-closed-outline"></ion-icon>
