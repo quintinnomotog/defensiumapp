@@ -1,0 +1,60 @@
+<section id="popover">
+    <form [formGroup]="categoriaCredencialFormGroup" (ngSubmit)="onCreate()">
+
+        <div class="formulario-input">
+            <ion-label>Nome da Categoria</ion-label>
+            <input type="text" placeholder="Informe o nome da Categoria" formControlName="descricao" />
+            <ion-icon name="apps"></ion-icon>
+        </div>
+
+        <div class="box-icone">
+            <div class="icones">
+
+                <ion-accordion-group>
+                    <ion-accordion value="first">
+                        <ion-item slot="header" color="light">
+                            <ion-label>Icone</ion-label>
+                        </ion-item>
+                        <div class="ion-padding" slot="content">
+                            <div class="box-icone">
+                                <div class="icones">
+                                    <ion-grid>
+                                        <ion-row>
+                                            <ion-col size="1" *ngFor="let item of iconeList">
+                                                <ion-icon [name]="item" [class.selecionado]="iconeSelecionado === item"
+                                                    (click)="selecionarIcone(item)"></ion-icon>
+                                            </ion-col>
+                                        </ion-row>
+                                    </ion-grid>
+                                </div>
+                            </div>
+                        </div>
+                    </ion-accordion>
+                    <ion-accordion value="second">
+                        <ion-item slot="header" color="light">
+                            <ion-label>Cor</ion-label>
+                        </ion-item>
+                        <div class="ion-padding" slot="content">
+                            <div class="box-cor">
+                                <div class="cores">
+                                    <ion-grid>
+                                        <ion-row>
+                                            <ion-col size="2" *ngFor="let item of corList">
+                                                <div [style.background]="item" (click)="selecionarCor(item)"
+                                                    [class.selecionada]="corSelecionada === item"></div>
+                                            </ion-col>
+                                        </ion-row>
+                                    </ion-grid>
+                                </div>
+                            </div>
+                        </div>
+                    </ion-accordion>
+                </ion-accordion-group>
+            </div>
+        </div>
+
+        <ion-button type="submit" expand="block" [disabled]="!categoriaCredencialFormGroup.valid">Save</ion-button>
+
+
+    </form>
+</section>

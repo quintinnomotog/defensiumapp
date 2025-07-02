@@ -8,13 +8,13 @@
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
-/* @import "@ionic/angular/css/palettes/dark.always.css"; */
-/* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import '@ionic/angular/css/palettes/dark.system.css';
+// @import "@ionic/angular/css/palettes/dark.always.css";
+// @import "@ionic/angular/css/palettes/dark.class.css";
+// @import '@ionic/angular/css/palettes/dark.system.css';
 @import url("./theme/fonts.scss");
 
 * {
-    font-family: "Lexend";
+    font-family: "Poppins";
 }
 
 ion-header,
@@ -22,9 +22,12 @@ ion-toolbar {
     box-shadow: none !important;
 }
 
-// .searchbar-input.sc-ion-searchbar-md {
-//     height: 3.5rem !important;
-// }
+ion-tab-bar {
+    --border: 0 !important;
+    border-top-left-radius: 14px;
+    border-top-right-radius: 14px;
+    box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.1);
+}
 
 .column10 {
     flex: 10;
@@ -48,4 +51,23 @@ ion-toolbar {
 
 .column80 {
     flex: 80
+}
+
+ion-toolbar,
+ion-content {
+    --background: #fafafa;
+}
+
+.popover::part(content) {
+    width: 90%;
+    height: 90dvh;
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), 0 0 10px rgba(155, 81, 224, 0.4);
+}
+
+ion-popover {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(1px);
 }

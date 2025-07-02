@@ -1,0 +1,100 @@
+<ion-content scroll="true" scrollAssist="true" scrollEvents="true" keyboardResize="ionic" class="ion-padding">
+
+  <section id="searchbar">
+    <div class="searchbar">
+      <img src="assets/icon/search.png" />
+      <input type="text" placeholder="Search for a website or app" />
+    </div>
+  </section>
+
+  <section id="links" *ngIf="!isLoading">
+
+    <ion-button id="modal-secondary" (click)="abrirPopoverPessoaCadastrar()">
+      <ion-icon name="add"></ion-icon>
+    </ion-button>
+
+    <swiper-container [slidesPerView]="2.8" [spaceBetween]="10">
+      @for(item of categoriaCredencialList; track item.codePublic) {
+      <swiper-slide (click)="selecionarCategoriaCredencial(item)"
+        [class.selecionar-categoria-credencial]="credencialFormGroup.get('categoriaCredencialEntity')?.value === item.code">
+        {{ item.descricao }}
+      </swiper-slide>
+      }
+    </swiper-container>
+
+  </section>
+
+  <section id="loading" *ngIf="isLoading">
+    <ion-spinner></ion-spinner>
+  </section>
+
+  <section id="dividor">
+    <hr />
+  </section>
+
+  <section id="formulario">
+
+    <form [formGroup]="credencialFormGroup" (ngSubmit)="onCreate()">
+
+      <div id="section-website-aplicativo">
+
+        <div class="formulario-input">
+          <ion-label>Instituição <sup>*</sup></ion-label>
+
+          <input type="text" placeholder="Exemplo: Google, Microsoft etc" formControlName="nomeInstituicao" (ngModelChange)="pesquisarInstituicao($event)" autocomplete="off" maxlength="100" />
+
+          <ion-icon name="person-outline"></ion-icon>
+          <div *ngIf="isApresentarListaResultadoPesquisa" class="resultado-pesquisa">
+            <ion-list lines="none">
+              <ion-item *ngFor="let item of instituicaoFiltradaList" (click)="selecionarInstituicao(item)">{{ item.nome }}</ion-item>
+            </ion-list>
+          </div>
+        </div>
+
+        <div class="formulario-input">
+          <ion-label>Descrição</ion-label>
+          <input type="text" placeholder="Descrição" maxlength="100" formControlName="descricao"
+            [class.campo-invalido]="isCampoInvalido('descricao')" />
+          <ion-icon name="document-text-outline"></ion-icon>
+          <small *ngIf="isCampoInvalido('descricao')">Descrição Inválida!</small>
+        </div>
+
+        <div *ngIf="credencialFormGroup.get('categoriaCredencialEntity')?.value === 2" class="formulario-input">
+          <ion-label>Usuário <sup>*</sup></ion-label>
+          <input type="text" placeholder="E-mail, telefone ou nome de usuário" maxlength="100" autocapitalize="off"
+            formControlName="identificador" [class.campo-invalido]="isCampoInvalido('identificador')" />
+          <ion-icon name="mail-outline"></ion-icon>
+          <small *ngIf="isCampoInvalido('identificador')">Identificador Inválido!</small>
+        </div>
+
+        <!-- FIXME: Esse campo fica atrás do teclado no Android, deve-se ajustar conforme o usuário digita -->
+        <div class="formulario-input">
+          <ion-label>Senha <sup>*</sup></ion-label>
+          <input [type]="tipoInpuSenha" placeholder="Enter Password" maxlength="60" formControlName="senha"
+            [class.campo-invalido]="isCampoInvalido('senha')" />
+          <ion-icon name="lock-closed-outline"></ion-icon>
+          <div (click)="gerarSenha()" class="icone-secundario">
+            <ion-icon name="reload-outline"></ion-icon>
+          </div>
+          <div (click)="apresentarOcultarSenha()" class="icone-terceario">
+            <ion-icon [name]="iconeVerificarSenha"></ion-icon>
+          </div>
+          <small *ngIf="isCampoInvalido('senha')">Senha Inválida!</small>
+        </div>
+
+        <div class="formulario-input">
+          <ion-label>Link</ion-label>
+          <input type="text" placeholder="http://www.domain.com" maxlength="100" formControlName="link" [class.campo-invalido]="isCampoInvalido('link')"/>
+          <ion-icon name="person-outline"></ion-icon>
+          <small *ngIf="isCampoInvalido('identificador')">Campo Obrigatório!</small>
+        </div>
+
+      </div>
+
+      <ion-button type="submit" expand="block" [disabled]="!credencialFormGroup.valid">Save</ion-button>
+
+    </form>
+
+  </section>
+
+</ion-content>

@@ -3,11 +3,24 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'principal',
+    redirectTo: 'tabmenu/principal',
     pathMatch: 'full',
   },
+  // {
+  //   path: '',
+  //   redirectTo: 'pessoa-cadastrar',
+  //   pathMatch: 'full',
+  // },
   {
-    path: 'principal',
-    loadComponent: () => import('./page/principal/principal.page').then( m => m.PrincipalPage)
+    path: 'tabmenu',
+    loadChildren: () => import("./component/tabmenu/tabmenu.routes").then(module => module.tabmenuRoutes),
+  },
+  {
+    path: 'credencial-cadastrar',
+    loadComponent: () => import('./modal/credencial-cadastrar/credencial-cadastrar.page').then( m => m.CredencialCadastrarPage)
+  },
+  {
+    path: 'pessoa-cadastrar',
+    loadComponent: () => import('./modal/pessoa-cadastrar/pessoa-cadastrar.page').then( m => m.PessoaCadastrarPage)
   },
 ];
