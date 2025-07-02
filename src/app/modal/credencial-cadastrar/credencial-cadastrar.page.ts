@@ -37,10 +37,10 @@ import {
 import { CredencialModel } from 'src/app/model/credencial.model';
 import { CategoriaCredencialService } from 'src/app/service/categoria-credencial.service';
 import { CredencialService } from 'src/app/service/credencial.service';
-import { GeradorSenhaService } from 'src/app/service/gerador-senha.service';
-import { PessoaCadastrarPage } from '../pessoa-cadastrar/pessoa-cadastrar.page';
-import { PessoaService } from 'src/app/service/pessoa.service';
 import { EventoService } from 'src/app/service/evento.service';
+import { GeradorSenhaService } from 'src/app/service/gerador-senha.service';
+import { PessoaService } from 'src/app/service/pessoa.service';
+import { PessoaCadastrarPage } from '../pessoa-cadastrar/pessoa-cadastrar.page';
 
 @Component({
   selector: 'app-credencial-cadastrar',
@@ -121,7 +121,7 @@ export class CredencialCadastrarPage implements OnInit {
     this.credencialFormGroup = this.formBuilder.group({
       nomeInstituicao: ['', Validators.required],
       categoriaCredencialEntity: ['2', Validators.required],
-      pessoaEntity: [""],
+      pessoaID: [""],
       identificador: ['', [Validators.required]],
       senha: ['', Validators.required],
       descricao: [''],
@@ -164,6 +164,7 @@ export class CredencialCadastrarPage implements OnInit {
   }
 
   public onCreate() {
+    debugger
     if (this.credencialFormGroup.valid) {
       const credencialModel = this.configurarCredencialModel();
       this.credencialService.create(credencialModel).subscribe({
@@ -195,8 +196,9 @@ export class CredencialCadastrarPage implements OnInit {
         descricao: '',
       },
       pessoaEntity: {
-        code: this.credencialFormGroup.get('pessoaEntity')?.value,
+        code: this.credencialFormGroup.get('pessoaID')?.value,
         nome: this.credencialFormGroup.get("nomeInstituicao")?.value,
+        codePublic: "",
       },
       descricao: this.credencialFormGroup.get('descricao')?.value,
       link: this.credencialFormGroup.get('link')?.value,
@@ -293,6 +295,7 @@ export class CredencialCadastrarPage implements OnInit {
     debugger
     this.credencialFormGroup.patchValue({
       nomeInstituicao: item.nome,
+      pessoaID: item.code
     });
     this.isApresentarListaResultadoPesquisa = false;
   }
@@ -301,7 +304,6 @@ export class CredencialCadastrarPage implements OnInit {
     await this.pessoaService.getFindAll().subscribe({
       next: (response) => {
         this.pessoaList = response;
-        console.log(this.pessoaList);
       },
       error: (response) => {
         console.error("Falha ao tentar recuperar a lista de Pessoas!");
