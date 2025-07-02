@@ -71,33 +71,33 @@
 
   <section id="contas-recentes">
     <ion-list lines="none">
-  @for(item of credencialList; track item.codePublic) {
-    <ion-item>
-      <ion-row class="ion-align-items-center" style="width: 100%;">
-        
-        <ion-col size="2">
-          <div class="icone">
-            <div class="logomarca">
-              <ion-text>{{ getRecuperarNome(item) }}</ion-text>
+      @for(item of credencialList; track item.codePublic) {
+      <ion-item>
+        <ion-row class="ion-align-items-center" style="width: 100%;">
+
+          <ion-col size="2">
+            <div class="icone">
+              <div class="logomarca">
+                <ion-text>{{ getRecuperarNome(item) }}</ion-text>
+              </div>
             </div>
-          </div>
-        </ion-col>
+          </ion-col>
 
-        <ion-col size="8">
-          <ion-text class="dados-credencial">
-            <b>{{ item.nomePessoa }}</b>
-            <p>{{ item.identificador }}</p>
-          </ion-text>
-        </ion-col>
+          <ion-col size="8">
+            <ion-text class="dados-credencial">
+              <b>{{ item.nomePessoa }}</b>
+              <p>{{ item.identificador }}</p>
+            </ion-text>
+          </ion-col>
 
-        <ion-col size="2" class="ion-text-end">
-          <ion-icon name="copy-outline" (click)="copiarSenha(item)"></ion-icon>
-        </ion-col>
+          <ion-col size="2" class="ion-text-end">
+            <ion-icon name="copy-outline" (click)="copiarSenha(item)"></ion-icon>
+          </ion-col>
 
-      </ion-row>
-    </ion-item>
-  }
-</ion-list>
+        </ion-row>
+      </ion-item>
+      }
+    </ion-list>
 
   </section>
 

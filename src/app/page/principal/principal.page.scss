@@ -27,7 +27,6 @@
 
             p {
                 margin-top: 0.1rem;
-                // border: dashed red 2px;
                 font-size: 1rem;
                 color: #758393;
             }
@@ -221,51 +220,58 @@
 // }
 
 #contas-recentes {
-    .icone {
-        background: #F1F5FC;
-        width: 60px;
-        height: 60px;
-        border-radius: 30%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    // border: dashed red 2px;
+    ion-list {
+        background: #fafafa;
+        ion-item {
+            --background: #fafafa;
+        }
 
-        .logomarca {
-            background: linear-gradient(180deg, rgb(111, 133, 232), rgb(68, 68, 238));
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
+        .icone {
+            background: #F1F5FC;
+            width: 60px;
+            height: 60px;
+            border-radius: 30%;
             display: flex;
             justify-content: center;
             align-items: center;
 
-            ion-text {
-                color: white;
-                font-size: 1.3rem;
-                font-weight: bold;
+            .logomarca {
+                background: linear-gradient(180deg, rgb(111, 133, 232), rgb(68, 68, 238));
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                ion-text {
+                    color: white;
+                    font-size: 1.3rem;
+                    font-weight: bold;
+                }
             }
         }
-    }
 
-    .dados-credencial {
-        b {
-            font-size: 1rem;
+        .dados-credencial {
+            b {
+                font-size: 1rem;
+            }
+
+            p {
+                color: #758393;
+                margin-top: 0.3rem;
+                font-size: 0.9rem;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
         }
 
-        p {
+        ion-icon[name="copy-outline"] {
+            font-size: 1.8rem;
             color: #758393;
-            margin-top: 0.3rem;
-            font-size: 0.9rem;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            cursor: pointer;
         }
     }
-
-    ion-icon[name="copy-outline"] {
-        font-size: 1.8rem;
-        color: #758393;
-        cursor: pointer;
-    }
-
 }
