@@ -48,26 +48,60 @@
     <ion-text>Credenciais Recentes</ion-text>
   </section>
 
-  @for(item of credencialList; track item.codePublic) {
+  <!-- @for(item of credencialList; track item.codePublic) {
   <section id="contas-recentes">
     <div class="box-a">
       <div class="icone">
-        <!-- <img [src]="item.imagem" /> -->
-        <div class="logomarca">
+        <div class="logomarca column20">
           <ion-text>{{ getRecuperarNome(item) }}</ion-text>
         </div>
       </div>
     </div>
-    <div class="box-b">
+    <div class="box-b column80">
       <ion-text class="dados-credencial">
         <b>{{ item.nomePessoa }}</b>
         <p>{{ item.identificador }}</p>
       </ion-text>
     </div>
-    <div class="box-c">
+    <div class="box-c column20">
       <ion-icon name="copy-outline" (click)="copiarSenha(item)"></ion-icon>
     </div>
   </section>
+  } -->
+
+  <section id="contas-recentes">
+    <ion-list lines="none">
+  @for(item of credencialList; track item.codePublic) {
+    <ion-item>
+      <ion-row class="ion-align-items-center" style="width: 100%;">
+        
+        <!-- Ícone circular à esquerda -->
+        <ion-col size="2">
+          <div class="icone">
+            <div class="logomarca">
+              <ion-text>{{ getRecuperarNome(item) }}</ion-text>
+            </div>
+          </div>
+        </ion-col>
+
+        <!-- Dados da credencial -->
+        <ion-col size="8">
+          <ion-text class="dados-credencial">
+            <b>{{ item.nomePessoa }}</b>
+            <p>{{ item.identificador }}</p>
+          </ion-text>
+        </ion-col>
+
+        <!-- Ícone de copiar -->
+        <ion-col size="2" class="ion-text-end">
+          <ion-icon name="copy-outline" (click)="copiarSenha(item)"></ion-icon>
+        </ion-col>
+
+      </ion-row>
+    </ion-item>
   }
+</ion-list>
+
+  </section>
 
 </ion-content>
