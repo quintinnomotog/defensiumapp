@@ -140,12 +140,16 @@ export class PrincipalPage implements OnInit {
   // FIXME: Deve fazer uma requisição passando o codePublic e retornar a senha verdadeira
   // não criptografada
   public async copiarSenha(credencial: any) {
-    await navigator.clipboard.writeText(credencial.senha);
-    this.emitirMensagemToast();
+    this.credencialService.getRecuperarSenha(credencial.codePublic).subscribe({
+      next: async (response) => {
+        await navigator.clipboard.writeText(response.senha);
+        this.emitirMensagemToast();
+      },
+      error: async (response) => {}
+    });
   }
 
   public findAll(): void {
-    debugger
     this.credencialService.findAll().subscribe({
       next: (response: any) => {
         this.credencialList = response.objectList;
@@ -158,7 +162,6 @@ export class PrincipalPage implements OnInit {
   }
 
   public getRecuperarNome(item: any) {
-    debugger
     return item.nomePessoa.charAt(0).toUpperCase();
   }
 

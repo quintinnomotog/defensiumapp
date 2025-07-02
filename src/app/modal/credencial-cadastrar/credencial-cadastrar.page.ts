@@ -290,6 +290,7 @@ export class CredencialCadastrarPage implements OnInit {
   }
 
   public selecionarInstituicao(item: any) {
+    debugger
     this.credencialFormGroup.patchValue({
       nomeInstituicao: item.nome,
     });
@@ -299,7 +300,6 @@ export class CredencialCadastrarPage implements OnInit {
   public async recuperarPessoa() {
     await this.pessoaService.getFindAll().subscribe({
       next: (response) => {
-        debugger
         this.pessoaList = response;
         console.log(this.pessoaList);
       },

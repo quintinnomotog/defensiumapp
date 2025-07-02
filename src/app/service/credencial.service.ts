@@ -13,6 +13,8 @@ export class CredencialService {
 
   private ENDPOINT = "/credencial";
 
+  private ENDPOINT_DESCRIPTOGRAFAR = "/descriptografar";
+
   constructor() { }
 
   // "http://localhost:8080/defensium/credencial"
@@ -21,8 +23,11 @@ export class CredencialService {
   }
 
   public create(credencialModel: CredencialModel): Observable<any> {
-    debugger
     return this.httpClient.post<any>(environment.url_api.concat(this.ENDPOINT), credencialModel);
+  }
+
+  public getRecuperarSenha(codePublic: any): Observable<any> {
+    return this.httpClient.post<any>(environment.url_api.concat(this.ENDPOINT.concat(this.ENDPOINT_DESCRIPTOGRAFAR)), codePublic);
   }
 
 }
