@@ -40,6 +40,7 @@ import { CredencialService } from 'src/app/service/credencial.service';
 import { GeradorSenhaService } from 'src/app/service/gerador-senha.service';
 import { PessoaCadastrarPage } from '../pessoa-cadastrar/pessoa-cadastrar.page';
 import { PessoaService } from 'src/app/service/pessoa.service';
+import { EventoService } from 'src/app/service/evento.service';
 
 @Component({
   selector: 'app-credencial-cadastrar',
@@ -88,6 +89,8 @@ export class CredencialCadastrarPage implements OnInit {
   private pessoaService = inject(PessoaService);
 
   public pessoaList: any[] = [];
+
+  private eventoService = inject(EventoService);
 
   constructor(private formBuilder: FormBuilder) {
     addIcons({
@@ -167,6 +170,7 @@ export class CredencialCadastrarPage implements OnInit {
         next: async (response) => {
           this.apresentarToastSucesso();
           this.clearFormulario();
+          this.eventoService.emitirAtualizacaoCredencial();
           this.getFecharModal();
         },
         error: async (response) => {

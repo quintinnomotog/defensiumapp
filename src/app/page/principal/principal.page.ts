@@ -9,48 +9,46 @@ import {
 import { FormsModule } from '@angular/forms';
 import {
   IonAvatar,
-  IonButton,
   IonContent,
   IonHeader,
-  IonSearchbar,
   IonText,
-  IonTitle,
   IonToolbar,
-  ToastController,
+  ToastController
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import {
+  barChart,
+  business,
+  card,
+  cardOutline,
+  cashOutline,
+  cloud,
+  colorPalette,
   copy,
   copyOutline,
+  earth,
+  key,
+  keyOutline,
+  lockClosed,
+  lockClosedOutline,
   logoGoogle,
   logoMicrosoft,
   logoWindows,
   notifications,
   notificationsOutline,
+  pieChart,
   reload,
   reloadOutline,
-  business,
-  card,
-  wifi,
   server,
-  earth,
-  key,
-  lockClosed,
-  shieldCheckmark,
-  colorPalette,
-  barChart,
-  pieChart,
-  settings,
-  terminal,
-  cloud,
-  lockClosedOutline,
-  cardOutline,
-  cashOutline,
-  wifiOutline,
   serverOutline,
-  keyOutline,
+  settings,
+  shieldCheckmark,
+  terminal,
+  wifi,
+  wifiOutline,
 } from 'ionicons/icons';
 import { CredencialService } from 'src/app/service/credencial.service';
+import { EventoService } from 'src/app/service/evento.service';
 import { CategoriaCredencialService } from '../../service/categoria-credencial.service';
 
 @Component({
@@ -72,7 +70,7 @@ import { CategoriaCredencialService } from '../../service/categoria-credencial.s
   providers: [CredencialService],
 })
 export class PrincipalPage implements OnInit {
-  
+
   private toastController = inject(ToastController);
 
   private credencialService = inject(CredencialService);
@@ -84,6 +82,10 @@ export class PrincipalPage implements OnInit {
   public categoriaCredencialList: any[] = [];
 
   private categoriaCredencialService = inject(CategoriaCredencialService);
+
+  private eventoService = inject(EventoService);
+
+  private subscription: any;
 
   constructor() {
     addIcons({
@@ -122,9 +124,18 @@ export class PrincipalPage implements OnInit {
   ngOnInit() {
     this.findAll();
     this.recuperarCategoriaCredencial();
+    this.subscription = this.eventoService.credencialAtualizada$.subscribe(() => {
+      this.findAll();
+    });
   }
 
-  ionViewWillEnter() {}
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+  }
+
+  ionViewWillEnter() { }
 
   // FIXME: Deve fazer uma requisição passando o codePublic e retornar a senha verdadeira
   // não criptografada
@@ -134,6 +145,7 @@ export class PrincipalPage implements OnInit {
   }
 
   public findAll(): void {
+    debugger
     this.credencialService.findAll().subscribe({
       next: (response: any) => {
         this.credencialList = response.objectList;
@@ -146,7 +158,8 @@ export class PrincipalPage implements OnInit {
   }
 
   public getRecuperarNome(item: any) {
-    return item.descricao.charAt(0).toUpperCase();
+    debugger
+    return item.nomePessoa.charAt(0).toUpperCase();
   }
 
   public async emitirMensagemToast() {
@@ -218,4 +231,5 @@ export class PrincipalPage implements OnInit {
       Math.floor(Math.random() * iconesDisponiveis.length)
     ];
   }
+
 }

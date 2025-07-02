@@ -12,6 +12,7 @@
         ion-avatar {
             padding: 0.1rem;
             border: solid silver 3px;
+
             img {
                 object-fit: cover;
             }
@@ -158,6 +159,8 @@
     align-items: center;
 
     .box-a {
+        // border: dashed red 2px;
+        margin-right: -2rem;
         .icone {
             background: #F1F5FC;
             width: 60px;
@@ -175,6 +178,7 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
+
                 ion-text {
                     color: white;
                     font-size: 1.3rem;
@@ -190,10 +194,15 @@
     }
 
     .box-b {
-        p {
-            color: #758393;
-            margin-top: 1rem;
-            line-height: 1px;
+        .dados-credencial {
+            b {}
+
+            p {
+                color: #758393;
+                margin-top: 1rem;
+                line-height: 1px;
+                font-size: 0.9rem;
+            }
         }
     }
 

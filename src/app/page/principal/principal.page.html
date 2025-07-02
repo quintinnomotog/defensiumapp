@@ -50,7 +50,7 @@
 
   @for(item of credencialList; track item.codePublic) {
   <section id="contas-recentes">
-    <div class="box-a column20">
+    <div class="box-a">
       <div class="icone">
         <!-- <img [src]="item.imagem" /> -->
         <div class="logomarca">
@@ -58,13 +58,13 @@
         </div>
       </div>
     </div>
-    <div class="box-b column70">
-      <ion-text>
-        <b>{{ item.descricao }}</b>
+    <div class="box-b">
+      <ion-text class="dados-credencial">
+        <b>{{ item.nomePessoa }}</b>
         <p>{{ item.identificador }}</p>
       </ion-text>
     </div>
-    <div class="box-c column10">
+    <div class="box-c">
       <ion-icon name="copy-outline" (click)="copiarSenha(item)"></ion-icon>
     </div>
   </section>
