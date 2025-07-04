@@ -87,6 +87,10 @@ export class PrincipalPage implements OnInit {
 
   private subscription: any;
 
+  private numeroPagina: number = 0;
+
+  private numeroResultadoPagina = 5;
+
   constructor() {
     addIcons({
       logoWindows,
@@ -122,12 +126,13 @@ export class PrincipalPage implements OnInit {
   }
 
   ngOnInit() {
-    this.findAll();
+    this.findAll(undefined, true);
     this.recuperarCategoriaCredencial();
     this.subscription = this.eventoService.credencialAtualizada$.subscribe(() => {
-      this.findAll();
+      this.findAll(undefined, true);
     });
   }
+
 
   ngOnDestroy() {
     if (this.subscription) {
@@ -137,22 +142,30 @@ export class PrincipalPage implements OnInit {
 
   ionViewWillEnter() { }
 
-  // FIXME: Deve fazer uma requisição passando o codePublic e retornar a senha verdadeira
-  // não criptografada
   public async copiarSenha(credencial: any) {
     this.credencialService.getRecuperarSenha(credencial.codePublic).subscribe({
       next: async (response) => {
         await navigator.clipboard.writeText(response.senha);
         this.emitirMensagemToast();
       },
-      error: async (response) => {}
+      error: async (response) => { }
     });
   }
 
-  public findAll(): void {
-    this.credencialService.findAll().subscribe({
+  public findAll(event?: any, reset: boolean = false): void {
+
+    if (reset) {
+      this.numeroPagina = 0;
+      this.credencialList = [];
+    }
+
+    this.credencialService.findAll(this.numeroPagina, this.numeroResultadoPagina).subscribe({
       next: (response: any) => {
-        this.credencialList = response.objectList;
+        this.credencialList = this.credencialList.concat(response.content);
+        this.numeroPagina++;
+        if (event) {
+          event.target.complete();
+        }
       },
       error: (error) => {
         console.error('Erro ao buscar credenciais:', error);
@@ -160,6 +173,7 @@ export class PrincipalPage implements OnInit {
     });
     this.isAnimacaoAtivada = false;
   }
+
 
   public getRecuperarNome(item: any) {
     return item.nomePessoa.charAt(0).toUpperCase();
@@ -233,6 +247,10 @@ export class PrincipalPage implements OnInit {
     return iconesDisponiveis[
       Math.floor(Math.random() * iconesDisponiveis.length)
     ];
+  }
+
+  public recuperarCredencial(event: any) {
+    this.findAll(event);
   }
 
 }

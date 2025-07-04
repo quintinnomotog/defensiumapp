@@ -17,10 +17,15 @@ export class CredencialService {
 
   constructor() { }
 
-  // "http://localhost:8080/defensium/credencial"
-  public findAll(): Observable<any[]> {
-    return this.httpClient.get<any[]>(environment.url_api.concat(this.ENDPOINT));
+  // "http://localhost:8080/defensium/credencial?size=1&page=0"
+  // public findAll(): Observable<any[]> {
+  //   return this.httpClient.get<any[]>(environment.url_api.concat(this.ENDPOINT));
+  // }
+
+  public findAll(numeroPagina: number = 0, numeroResultadoPagina: number): Observable<any[]> {
+    return this.httpClient.get<any[]>(`${environment.url_api.concat(this.ENDPOINT)}?size=${numeroResultadoPagina}&page=${numeroPagina}`);
   }
+
 
   public create(credencialModel: CredencialModel): Observable<any> {
     return this.httpClient.post<any>(environment.url_api.concat(this.ENDPOINT), credencialModel);

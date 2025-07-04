@@ -164,7 +164,6 @@ export class CredencialCadastrarPage implements OnInit {
   }
 
   public onCreate() {
-    debugger
     if (this.credencialFormGroup.valid) {
       const credencialModel = this.configurarCredencialModel();
       this.credencialService.create(credencialModel).subscribe({

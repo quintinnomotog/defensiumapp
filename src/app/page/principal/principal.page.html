@@ -11,7 +11,6 @@
         </ion-text>
       </div>
       <div class="box-b">
-        <!-- <ion-icon name="reload" (click)="atualizarDadosCredenciais()" [class.rotacao-icone]="isAnimacaoAtivada"></ion-icon> -->
         <ion-icon name="notifications-outline"></ion-icon>
       </div>
     </section>
@@ -33,7 +32,7 @@
 
   <section id="categoria">
 
-    <swiper-container [slidesPerView]="2.5" [spaceBetween]="10">
+    <swiper-container [slidesPerView]="1.5" [spaceBetween]="10">
       @for(item of categoriaCredencialList; track item.codePublic) {
       <swiper-slide [style.background]="item.corFundo">
         <ion-icon [name]="item.nomeIcone"></ion-icon>
@@ -47,27 +46,6 @@
   <section id="cabecalho">
     <ion-text>Credenciais Recentes</ion-text>
   </section>
-
-  <!-- @for(item of credencialList; track item.codePublic) {
-  <section id="contas-recentes">
-    <div class="box-a">
-      <div class="icone">
-        <div class="logomarca column20">
-          <ion-text>{{ getRecuperarNome(item) }}</ion-text>
-        </div>
-      </div>
-    </div>
-    <div class="box-b column80">
-      <ion-text class="dados-credencial">
-        <b>{{ item.nomePessoa }}</b>
-        <p>{{ item.identificador }}</p>
-      </ion-text>
-    </div>
-    <div class="box-c column20">
-      <ion-icon name="copy-outline" (click)="copiarSenha(item)"></ion-icon>
-    </div>
-  </section>
-  } -->
 
   <section id="contas-recentes">
     <ion-list lines="none">
@@ -100,5 +78,9 @@
     </ion-list>
 
   </section>
+
+  <ion-infinite-scroll threshold="10%" (ionInfinite)="recuperarCredencial($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Carregando mais dados..."></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 
 </ion-content>
