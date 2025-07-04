@@ -34,7 +34,8 @@
 
     <swiper-container [slidesPerView]="1.5" [spaceBetween]="10">
       @for(item of categoriaCredencialList; track item.codePublic) {
-      <swiper-slide [style.background]="item.corFundo">
+      <!-- <swiper-slide [style.background]="item.corFundo"> -->
+        <swiper-slide [ngStyle]="{background: 'linear-gradient(to right, ' + item.corFundo + ', ' + ajustarCor(item.corFundo, -30) + ')'}">
         <ion-icon [name]="item.nomeIcone"></ion-icon>
         <ion-text>{{ item.descricao }}</ion-text>
       </swiper-slide>

@@ -253,4 +253,21 @@ export class PrincipalPage implements OnInit {
     this.findAll(event);
   }
 
+  // https://stackoverflow.com/questions/5560248/programmatically-lighten-or-darken-a-hex-color-or-rgb-and-blend-colors
+  public ajustarCor(cor: string, amount: number): string {
+    let usePound = false;
+    if (cor[0] === "#") {
+      cor = cor.slice(1);
+      usePound = true;
+    }
+    let num = parseInt(cor, 16);
+    let r = (num >> 16) + amount;
+    let g = ((num >> 8) & 0x00FF) + amount;
+    let b = (num & 0x0000FF) + amount;
+    r = Math.max(Math.min(255, r), 0);
+    g = Math.max(Math.min(255, g), 0);
+    b = Math.max(Math.min(255, b), 0);
+    return (usePound ? "#" : "") + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+  }
+
 }
