@@ -89,7 +89,7 @@ export class PrincipalPage implements OnInit {
 
   private numeroPagina: number = 0;
 
-  private numeroResultadoPagina = 5;
+  private numeroResultadoPagina = 2;
 
   constructor() {
     addIcons({
@@ -133,14 +133,15 @@ export class PrincipalPage implements OnInit {
     });
   }
 
-
   ngOnDestroy() {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
   }
 
-  ionViewWillEnter() { }
+  ionViewWillEnter() {
+    this.findAll(undefined, true);
+  }
 
   public async copiarSenha(credencial: any) {
     this.credencialService.getRecuperarSenha(credencial.codePublic).subscribe({

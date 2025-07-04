@@ -33,9 +33,9 @@
   <section id="categoria">
 
     <swiper-container [slidesPerView]="1.5" [spaceBetween]="10">
-      @for(item of categoriaCredencialList; track item.codePublic) {
-      <!-- <swiper-slide [style.background]="item.corFundo"> -->
-        <swiper-slide [ngStyle]="{background: 'linear-gradient(to right, ' + item.corFundo + ', ' + ajustarCor(item.corFundo, -30) + ')'}">
+      @for(item of categoriaCredencialList; track $index) {
+      <swiper-slide
+        [ngStyle]="{background: 'linear-gradient(to right, ' + item.corFundo + ', ' + ajustarCor(item.corFundo, -30) + ')'}">
         <ion-icon [name]="item.nomeIcone"></ion-icon>
         <ion-text>{{ item.descricao }}</ion-text>
       </swiper-slide>
@@ -50,7 +50,7 @@
 
   <section id="contas-recentes">
     <ion-list lines="none">
-      @for(item of credencialList; track item.codePublic) {
+      @for(item of credencialList; track $index) {
       <ion-item>
         <ion-row class="ion-align-items-center" style="width: 100%;">
 
@@ -64,7 +64,7 @@
 
           <ion-col size="8">
             <ion-text class="dados-credencial">
-              <b>{{ item.nomePessoa }}</b>
+              <b>{{ item.descricao ? item.descricao : item.nomePessoa }}</b>
               <p>{{ item.identificador }}</p>
             </ion-text>
           </ion-col>
