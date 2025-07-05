@@ -6,6 +6,7 @@ import {
   OnInit,
 } from '@angular/core';
 import {
+  AbstractControl,
   FormBuilder,
   FormGroup,
   FormsModule,
@@ -317,20 +318,37 @@ export class CredencialCadastrarPage implements OnInit {
     const categoriaCODE = this.credencialFormGroup.get("categoriaCredencialEntity")?.value;
     switch (categoriaCODE) {
       case 8: // Senha Simples
-
         this.recuperarUsuarioLogado();
-
         // Obrigatórios
         this.credencialFormGroup.get('nomeInstituicao')?.setValidators([Validators.required]); // É obrigatório, mas setado automaticamente com o codigo do Usuário do Sistema
         this.credencialFormGroup.get('descricao')?.setValidators([Validators.required]);
         this.credencialFormGroup.get('senha')?.setValidators([Validators.required]);
         // Não obrigatórios
         this.credencialFormGroup.get('nomeInstituicao')?.clearValidators();
-        this.credencialFormGroup.get('categoriaCredencialEntity')?.clearValidators();
         this.credencialFormGroup.get('pessoaID')?.clearValidators();
         this.credencialFormGroup.get('identificador')?.clearValidators();
         this.credencialFormGroup.get('link')?.clearValidators();
         this.credencialFormGroup.get('observacao')?.clearValidators();
+        break;
+      case 2: // Credencial
+        this.clearformularioUsuarioLogado();
+        // Obrigatórios
+        this.credencialFormGroup.get('nomeInstituicao')?.setValidators([Validators.required]);
+        this.credencialFormGroup.get('descricao')?.setValidators([Validators.required]);
+        this.credencialFormGroup.get('identificador')?.setValidators([Validators.required]);
+        this.credencialFormGroup.get('senha')?.setValidators([Validators.required]);
+        // Não obrigatórios
+        this.credencialFormGroup.get('link')?.clearValidators();
+        break;
+      case 5: // WI-FI
+        this.recuperarUsuarioLogado();
+        // Obrigatórios
+        this.credencialFormGroup.get('nomeInstituicao')?.setValidators([Validators.required]);
+        this.credencialFormGroup.get('descricao')?.setValidators([Validators.required]);
+        this.credencialFormGroup.get('senha')?.setValidators([Validators.required]);
+        // Não obrigatórios
+        this.credencialFormGroup.get('identificador')?.clearValidators();
+        this.credencialFormGroup.get('link')?.clearValidators();
         break;
       default:
         this.credencialFormGroup.get('nomeInstituicao')?.setValidators([Validators.required]);
@@ -356,6 +374,20 @@ export class CredencialCadastrarPage implements OnInit {
       nomeInstituicao: "José Quintino",
       pessoaID: 1
     });
+  }
+
+  private clearformularioUsuarioLogado() {
+    this.credencialFormGroup.patchValue({
+      nomeInstituicao: undefined,
+      pessoaID: undefined
+    });
+  }
+
+  public isCampoFormularioObrigatorio(campoFormulario: any) {
+    const control = this.credencialFormGroup.get(campoFormulario);
+    if (!control || !control.validator) return false;
+    const validator = control.validator({} as AbstractControl);
+    return validator && validator['required'];
   }
 
 }

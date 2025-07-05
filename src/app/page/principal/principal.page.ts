@@ -89,7 +89,7 @@ export class PrincipalPage implements OnInit {
 
   private numeroPagina: number = 0;
 
-  private numeroResultadoPagina = 1;
+  private numeroResultadoPagina = 10;
 
   constructor() {
     addIcons({

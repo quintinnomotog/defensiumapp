@@ -38,7 +38,9 @@
 
       <div id="section-website-aplicativo">
 
-        <div *ngIf="credencialFormGroup.get('categoriaCredencialEntity')?.value !== 8" class="formulario-input">
+        <div 
+          *ngIf="credencialFormGroup.get('categoriaCredencialEntity')?.value !== 8 && credencialFormGroup.get('categoriaCredencialEntity')?.value !== 5" 
+          class="formulario-input">
           <ion-label>Instituição <sup>*</sup></ion-label>
 
           <input type="text" placeholder="Exemplo: Google, Microsoft etc" formControlName="nomeInstituicao" (ngModelChange)="pesquisarInstituicao($event)" autocomplete="off" maxlength="100" />
@@ -52,7 +54,10 @@
         </div>
 
         <div class="formulario-input">
-          <ion-label>Descrição</ion-label>
+          <ion-label>
+            Descrição
+            <sup *ngIf="isCampoFormularioObrigatorio('descricao')">*</sup>
+          </ion-label>
           <input type="text" placeholder="Descrição" maxlength="100" formControlName="descricao"
             [class.campo-invalido]="isCampoInvalido('descricao')" />
           <ion-icon name="document-text-outline"></ion-icon>
@@ -82,7 +87,11 @@
           <small *ngIf="isCampoInvalido('senha')">Senha Inválida!</small>
         </div>
 
-        <div *ngIf="credencialFormGroup.get('categoriaCredencialEntity')?.value !== 8" class="formulario-input">
+        <div 
+          *ngIf="
+            credencialFormGroup.get('categoriaCredencialEntity')?.value !== 8 && 
+            credencialFormGroup.get('categoriaCredencialEntity')?.value !== 5" 
+          class="formulario-input">
           <ion-label>Link</ion-label>
           <input type="text" placeholder="http://www.domain.com" maxlength="100" formControlName="link" [class.campo-invalido]="isCampoInvalido('link')"/>
           <ion-icon name="person-outline"></ion-icon>
