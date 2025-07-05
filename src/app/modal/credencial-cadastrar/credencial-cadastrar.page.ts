@@ -111,6 +111,9 @@ export class CredencialCadastrarPage implements OnInit {
 
   ngOnInit() {
     this.recuperarPessoa();
+    this.credencialFormGroup.get('categoriaCredencialEntity')?.valueChanges.subscribe(() => {
+      this.configurarFormularioPorCategoria();
+    });
   }
 
   ionViewDidEnter() {
@@ -164,6 +167,7 @@ export class CredencialCadastrarPage implements OnInit {
   }
 
   public onCreate() {
+    debugger
     if (this.credencialFormGroup.valid) {
       const credencialModel = this.configurarCredencialModel();
       this.credencialService.create(credencialModel).subscribe({
@@ -291,7 +295,6 @@ export class CredencialCadastrarPage implements OnInit {
   }
 
   public selecionarInstituicao(item: any) {
-    debugger
     this.credencialFormGroup.patchValue({
       nomeInstituicao: item.nome,
       pessoaID: item.code
@@ -307,6 +310,51 @@ export class CredencialCadastrarPage implements OnInit {
       error: (response) => {
         console.error("Falha ao tentar recuperar a lista de Pessoas!");
       }
+    });
+  }
+
+  public configurarFormularioPorCategoria() {
+    const categoriaCODE = this.credencialFormGroup.get("categoriaCredencialEntity")?.value;
+    switch (categoriaCODE) {
+      case 8: // Senha Simples
+
+        this.recuperarUsuarioLogado();
+
+        // Obrigatórios
+        this.credencialFormGroup.get('nomeInstituicao')?.setValidators([Validators.required]); // É obrigatório, mas setado automaticamente com o codigo do Usuário do Sistema
+        this.credencialFormGroup.get('descricao')?.setValidators([Validators.required]);
+        this.credencialFormGroup.get('senha')?.setValidators([Validators.required]);
+        // Não obrigatórios
+        this.credencialFormGroup.get('nomeInstituicao')?.clearValidators();
+        this.credencialFormGroup.get('categoriaCredencialEntity')?.clearValidators();
+        this.credencialFormGroup.get('pessoaID')?.clearValidators();
+        this.credencialFormGroup.get('identificador')?.clearValidators();
+        this.credencialFormGroup.get('link')?.clearValidators();
+        this.credencialFormGroup.get('observacao')?.clearValidators();
+        break;
+      default:
+        this.credencialFormGroup.get('nomeInstituicao')?.setValidators([Validators.required]);
+        this.credencialFormGroup.get('identificador')?.setValidators([Validators.required]);
+        this.credencialFormGroup.get('link')?.clearValidators();
+        break;
+    }
+    // Atualiza os validadores após configurar
+    this.credencialFormGroup.get('nomeInstituicao')?.updateValueAndValidity();
+    this.credencialFormGroup.get('descricao')?.updateValueAndValidity();
+    this.credencialFormGroup.get('link')?.updateValueAndValidity();
+    this.credencialFormGroup.get('senha')?.updateValueAndValidity();
+    this.credencialFormGroup.get('categoriaCredencialEntity')?.updateValueAndValidity();
+    this.credencialFormGroup.get('pessoaID')?.updateValueAndValidity();
+    this.credencialFormGroup.get('identificador')?.updateValueAndValidity();
+    this.credencialFormGroup.get('observacao')?.updateValueAndValidity();
+    return this.credencialFormGroup.valid;
+  }
+
+  // MOCK
+  private recuperarUsuarioLogado() {
+    this.credencialFormGroup.patchValue({
+      nomeInstituicao: "José Quintino",
+      pessoaID: 1
     });
   }
 

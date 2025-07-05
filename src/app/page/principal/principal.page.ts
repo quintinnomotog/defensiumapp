@@ -139,10 +139,6 @@ export class PrincipalPage implements OnInit {
     }
   }
 
-  ionViewWillEnter() {
-    this.findAll(undefined, true);
-  }
-
   public async copiarSenha(credencial: any) {
     this.credencialService.getRecuperarSenha(credencial.codePublic).subscribe({
       next: async (response) => {

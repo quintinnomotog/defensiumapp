@@ -65,7 +65,7 @@
           <ion-col size="8">
             <ion-text class="dados-credencial">
               <b>{{ item.descricao ? item.descricao : item.nomePessoa }}</b>
-              <p>{{ item.identificador }}</p>
+              <p>{{ item.identificador ? item.identificador : item.nomePessoa }}</p>
             </ion-text>
           </ion-col>
 
