@@ -1,4 +1,5 @@
 import { CommonModule } from '@angular/common';
+import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
@@ -54,8 +55,10 @@ import { PessoaCadastrarPage } from '../pessoa-cadastrar/pessoa-cadastrar.page';
     IonContent,
     CommonModule,
     FormsModule,
+    NgxMaskDirective
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  providers: [ provideNgxMask() ],
 })
 export class CredencialCadastrarPage implements OnInit {
   private modalController = inject(ModalController);

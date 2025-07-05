@@ -164,10 +164,12 @@
             class="formulario-input">
           <ion-label>Número do Cartão <sup>*</sup></ion-label>
           <input 
-            type="number" 
+            type="text" 
             placeholder="Informe o nome do titular do Cartão" 
-            maxlength="16" 
+            maxlength="19" 
             autocapitalize="off"
+            pattern="\d*"
+            mask="0000.0000.0000.0000"
             formControlName="cartaoBancarioNumeroCartao" 
             [class.campo-invalido]="isCampoInvalido('cartaoBancarioNumeroCartao')" />
           <ion-icon name="mail-outline"></ion-icon>
