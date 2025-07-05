@@ -89,7 +89,7 @@ export class PrincipalPage implements OnInit {
 
   private numeroPagina: number = 0;
 
-  private numeroResultadoPagina = 2;
+  private numeroResultadoPagina = 1;
 
   constructor() {
     addIcons({
@@ -154,10 +154,15 @@ export class PrincipalPage implements OnInit {
   }
 
   public findAll(event?: any, reset: boolean = false): void {
-
     if (reset) {
       this.numeroPagina = 0;
       this.credencialList = [];
+
+      const infiniteScrollEl = document.querySelector('ion-infinite-scroll') as HTMLIonInfiniteScrollElement;
+      if (infiniteScrollEl) {
+        infiniteScrollEl.complete();
+        infiniteScrollEl.disabled = false;
+      }
     }
 
     this.credencialService.findAll(this.numeroPagina, this.numeroResultadoPagina).subscribe({
@@ -167,6 +172,12 @@ export class PrincipalPage implements OnInit {
         if (event) {
           event.target.complete();
         }
+        if (response.last) {
+          const infiniteScrollEl = document.querySelector('ion-infinite-scroll') as HTMLIonInfiniteScrollElement;
+          if (infiniteScrollEl) {
+            infiniteScrollEl.disabled = true;
+          }
+        }
       },
       error: (error) => {
         console.error('Erro ao buscar credenciais:', error);
@@ -174,7 +185,6 @@ export class PrincipalPage implements OnInit {
     });
     this.isAnimacaoAtivada = false;
   }
-
 
   public getRecuperarNome(item: any) {
     return item.nomePessoa.charAt(0).toUpperCase();

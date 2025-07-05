@@ -38,7 +38,7 @@
 
       <div id="section-website-aplicativo">
 
-        <div class="formulario-input">
+        <div *ngIf="credencialFormGroup.get('categoriaCredencialEntity')?.value !== 8" class="formulario-input">
           <ion-label>Instituição <sup>*</sup></ion-label>
 
           <input type="text" placeholder="Exemplo: Google, Microsoft etc" formControlName="nomeInstituicao" (ngModelChange)="pesquisarInstituicao($event)" autocomplete="off" maxlength="100" />
@@ -82,7 +82,7 @@
           <small *ngIf="isCampoInvalido('senha')">Senha Inválida!</small>
         </div>
 
-        <div class="formulario-input">
+        <div *ngIf="credencialFormGroup.get('categoriaCredencialEntity')?.value !== 8" class="formulario-input">
           <ion-label>Link</ion-label>
           <input type="text" placeholder="http://www.domain.com" maxlength="100" formControlName="link" [class.campo-invalido]="isCampoInvalido('link')"/>
           <ion-icon name="person-outline"></ion-icon>
