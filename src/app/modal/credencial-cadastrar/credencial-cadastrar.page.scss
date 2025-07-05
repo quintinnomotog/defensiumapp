@@ -185,10 +185,12 @@ ion-content {
                 // border: solid red 2px;
                 width: 100%;
                 z-index: 999;
-                ion-list {        
+
+                ion-list {
                     background: #9290f3;
-                    border-top-left-radius: 5px;    
+                    border-top-left-radius: 5px;
                     border-top-right-radius: 5px;
+
                     ion-item {
                         --background: #9290f3;
                         font-weight: bold;
@@ -197,8 +199,117 @@ ion-content {
                     }
                 }
             }
+
             sup {
                 color: red;
+            }
+        }
+
+        // FIXME: Remover duplicação de código
+        .formulario-campo-data {
+            display: flex;
+            gap: 20px;
+            // border: solid red 2px;
+            .formulario-campo-data-input {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                align-items: start;
+
+                ion-label {
+                    position: relative;
+                    font-weight: bold;
+                    margin-bottom: 1rem;
+                }
+
+                input {
+                    position: relative;
+                    width: 100%;
+                    height: 64px;
+                    border: none;
+                    outline: none;
+                    background: #dfe1e5;
+                    border-radius: 30px;
+                    padding-left: 4rem;
+                    margin-bottom: 1rem;
+                    font-weight: bold;
+                    margin-bottom: 2rem;
+                }
+
+                input.campo-invalido {
+                    border: solid 2px var(--ion-color-danger);
+                }
+
+                ::placeholder {
+                    font-weight: bold;
+                    color: #444f60;
+                }
+
+                input:focus {
+                    border: solid #9290f3 2.2px;
+                }
+
+                ion-icon {
+                    position: absolute;
+                    margin-top: 3.8rem;
+                    left: 1.1rem;
+                    color: #6d7178;
+                    font-size: 1.4rem;
+                }
+
+                .icone-secundario {
+                    position: absolute;
+                    top: 0.1rem;
+                    right: 3.9rem;
+                    cursor: pointer;
+
+                    ion-icon {
+                        font-size: 1.7rem;
+                    }
+                }
+
+                .icone-terceario {
+                    position: absolute;
+                    top: 0.1rem;
+                    right: 7rem;
+                    cursor: pointer;
+
+                    ion-icon {
+                        font-size: 1.8rem;
+                    }
+                }
+
+                small {
+                    color: var(--ion-color-danger);
+                    position: absolute;
+                    top: 6.5rem;
+                    left: 1.5rem;
+                    font-size: 0.8rem;
+                }
+
+                .resultado-pesquisa {
+                    position: absolute;
+                    margin-top: 6.7rem;
+                    width: 100%;
+                    z-index: 999;
+
+                    ion-list {
+                        background: #9290f3;
+                        border-top-left-radius: 5px;
+                        border-top-right-radius: 5px;
+
+                        ion-item {
+                            --background: #9290f3;
+                            font-weight: bold;
+                            cursor: pointer;
+                            color: white;
+                        }
+                    }
+                }
+
+                sup {
+                    color: red;
+                }
             }
         }
 

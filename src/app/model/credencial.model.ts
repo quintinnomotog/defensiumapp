@@ -14,4 +14,9 @@ export interface CredencialModel {
     databasePorta: string,
     databaseNome: string,
     databaseUsuario: string,
+    cartaoBancarioNomeTitular: string,
+    cartaoBancarioNumeroCartao: string,
+    cartaoBancarioMesVencimento: string,
+    cartaoBancarioAnoVencimento: string,
+    cartaoBancarioCvv: string,
 }

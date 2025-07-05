@@ -33,8 +33,7 @@ import {
   lockClosedOutline,
   mailOutline,
   personOutline,
-  reloadOutline,
-} from 'ionicons/icons';
+  reloadOutline, calendarClearOutline, calendarOutline } from 'ionicons/icons';
 import { CredencialModel } from 'src/app/model/credencial.model';
 import { CategoriaCredencialService } from 'src/app/service/categoria-credencial.service';
 import { CredencialService } from 'src/app/service/credencial.service';
@@ -94,19 +93,7 @@ export class CredencialCadastrarPage implements OnInit {
   private eventoService = inject(EventoService);
 
   constructor(private formBuilder: FormBuilder) {
-    addIcons({
-      add,
-      personOutline,
-      mailOutline,
-      documentTextOutline,
-      lockClosedOutline,
-      reloadOutline,
-      eyeOffOutline,
-      eyeOutline,
-      closeCircleOutline,
-      checkmarkCircleOutline,
-      keyOutline,
-    });
+    addIcons({add,personOutline,documentTextOutline,mailOutline,calendarClearOutline,calendarOutline,lockClosedOutline,reloadOutline,eyeOffOutline,eyeOutline,closeCircleOutline,checkmarkCircleOutline,keyOutline,});
     this.configurarFormulario();
   }
 
@@ -135,6 +122,11 @@ export class CredencialCadastrarPage implements OnInit {
       databasePorta: [''],
       databaseNome: [''],
       databaseUsuario: [''],
+      cartaoBancarioNomeTitular: [''],
+      cartaoBancarioNumeroCartao: [''],
+      cartaoBancarioMesVencimento: [''],
+      cartaoBancarioAnoVencimento: [''],
+      cartaoBancarioCvv: [''],
     });
   }
 
@@ -216,7 +208,12 @@ export class CredencialCadastrarPage implements OnInit {
       databasePorta: this.credencialFormGroup.get('databasePorta')?.value,
       databaseNome: this.credencialFormGroup.get('databaseNome')?.value,
       databaseUsuario: this.credencialFormGroup.get('databaseUsuario')?.value,
-      
+
+      cartaoBancarioNomeTitular: this.credencialFormGroup.get('cartaoBancarioNomeTitular')?.value,
+      cartaoBancarioNumeroCartao: this.credencialFormGroup.get('cartaoBancarioNumeroCartao')?.value,
+      cartaoBancarioMesVencimento: this.credencialFormGroup.get('cartaoBancarioMesVencimento')?.value,
+      cartaoBancarioAnoVencimento: this.credencialFormGroup.get('cartaoBancarioAnoVencimento')?.value,
+      cartaoBancarioCvv: this.credencialFormGroup.get('cartaoBancarioCvv')?.value,
     };
   }
 
@@ -370,6 +367,22 @@ export class CredencialCadastrarPage implements OnInit {
         this.credencialFormGroup.get('databasename')?.setValidators([Validators.required]);
         this.credencialFormGroup.get('databaseusername')?.setValidators([Validators.required]);
         this.credencialFormGroup.get('databaseport')?.setValidators([Validators.required]);
+        this.credencialFormGroup.get('senha')?.setValidators([Validators.required]);
+        // Não obrigatórios
+        this.credencialFormGroup.get('identificador')?.clearValidators();
+        this.credencialFormGroup.get('link')?.clearValidators();
+        break;
+      case 3: // Cartão Bancário
+        this.clearformularioUsuarioLogado();
+        // Obrigatórios
+        this.credencialFormGroup.get('categoriaCredencialEntity')?.setValidators([Validators.required]);
+        this.credencialFormGroup.get('nomeInstituicao')?.setValidators([Validators.required]);
+        this.credencialFormGroup.get('descricao')?.setValidators([Validators.required]);
+        this.credencialFormGroup.get('cartaoBancarioNomeTitular')?.setValidators([Validators.required]);
+        this.credencialFormGroup.get('cartaoBancarioNumeroCartao')?.setValidators([Validators.required]);
+        this.credencialFormGroup.get('cartaoBancarioMesVencimento')?.setValidators([Validators.required]);
+        this.credencialFormGroup.get('cartaoBancarioAnoVencimento')?.setValidators([Validators.required]);
+        this.credencialFormGroup.get('cartaoBancarioCvv')?.setValidators([Validators.required]);
         this.credencialFormGroup.get('senha')?.setValidators([Validators.required]);
         // Não obrigatórios
         this.credencialFormGroup.get('identificador')?.clearValidators();
