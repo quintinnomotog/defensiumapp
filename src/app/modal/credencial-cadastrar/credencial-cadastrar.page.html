@@ -39,7 +39,10 @@
       <div id="section-website-aplicativo">
 
         <div 
-          *ngIf="credencialFormGroup.get('categoriaCredencialEntity')?.value !== 8 && credencialFormGroup.get('categoriaCredencialEntity')?.value !== 5" 
+          *ngIf="
+            credencialFormGroup.get('categoriaCredencialEntity')?.value !== 8 && 
+            credencialFormGroup.get('categoriaCredencialEntity')?.value !== 5 &&
+            credencialFormGroup.get('categoriaCredencialEntity')?.value !== 6" 
           class="formulario-input">
           <ion-label>Instituição <sup>*</sup></ion-label>
 
@@ -64,12 +67,79 @@
           <small *ngIf="isCampoInvalido('descricao')">Descrição Inválida!</small>
         </div>
 
-        <div *ngIf="credencialFormGroup.get('categoriaCredencialEntity')?.value === 2" class="formulario-input">
+        <div 
+          *ngIf="
+            credencialFormGroup.get('categoriaCredencialEntity')?.value === 2" 
+            class="formulario-input">
           <ion-label>Usuário <sup>*</sup></ion-label>
           <input type="text" placeholder="E-mail, telefone ou nome de usuário" maxlength="100" autocapitalize="off"
             formControlName="identificador" [class.campo-invalido]="isCampoInvalido('identificador')" />
           <ion-icon name="mail-outline"></ion-icon>
           <small *ngIf="isCampoInvalido('identificador')">Identificador Inválido!</small>
+        </div>
+
+        <div 
+          *ngIf="
+            credencialFormGroup.get('categoriaCredencialEntity')?.value === 6" 
+            class="formulario-input">
+          <ion-label>Endereço do Host <sup>*</sup></ion-label>
+          <input 
+            type="text" 
+            placeholder="Informe o nome do Hostname" 
+            maxlength="50" 
+            autocapitalize="off"
+            formControlName="databaseHostname" 
+            [class.campo-invalido]="isCampoInvalido('databaseHostname')" />
+          <ion-icon name="mail-outline"></ion-icon>
+          <small *ngIf="isCampoInvalido('databaseHostname')">Hostname Inválido!</small>
+        </div>
+
+        <div 
+          *ngIf="
+            credencialFormGroup.get('categoriaCredencialEntity')?.value === 6" 
+            class="formulario-input">
+          <ion-label>Número da Porta <sup>*</sup></ion-label>
+          <input 
+            type="text" 
+            placeholder="Informe a porta do Banco" 
+            maxlength="5" 
+            autocapitalize="off"
+            formControlName="databasePorta" 
+            [class.campo-invalido]="isCampoInvalido('databasePorta')" />
+          <ion-icon name="mail-outline"></ion-icon>
+          <small *ngIf="isCampoInvalido('databasePorta')">Porta Inválido!</small>
+        </div>
+
+        <div 
+          *ngIf="
+            credencialFormGroup.get('categoriaCredencialEntity')?.value === 6" 
+            class="formulario-input">
+          <ion-label>Nome do Banco de Dados <sup>*</sup></ion-label>
+          <input 
+            type="text" 
+            placeholder="Informe o nome do Banco" 
+            maxlength="100" 
+            autocapitalize="off"
+            formControlName="databaseNome" 
+            [class.campo-invalido]="isCampoInvalido('databaseNome')" />
+          <ion-icon name="mail-outline"></ion-icon>
+          <small *ngIf="isCampoInvalido('databaseNome')">Hostname Inválido!</small>
+        </div>
+
+        <div 
+          *ngIf="
+            credencialFormGroup.get('categoriaCredencialEntity')?.value === 6" 
+            class="formulario-input">
+          <ion-label>Nome de Usuário <sup>*</sup></ion-label>
+          <input 
+            type="text" 
+            placeholder="Informe o nome do Usuário" 
+            maxlength="100" 
+            autocapitalize="off"
+            formControlName="databaseUsuario" 
+            [class.campo-invalido]="isCampoInvalido('databaseUsuario')" />
+          <ion-icon name="mail-outline"></ion-icon>
+          <small *ngIf="isCampoInvalido('databaseUsuario')">Username Inválido!</small>
         </div>
 
         <!-- FIXME: Esse campo fica atrás do teclado no Android, deve-se ajustar conforme o usuário digita -->

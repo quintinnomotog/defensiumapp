@@ -131,6 +131,10 @@ export class CredencialCadastrarPage implements OnInit {
       descricao: [''],
       link: [''],
       observacao: [''],
+      databaseHostname: [''],
+      databasePorta: [''],
+      databaseNome: [''],
+      databaseUsuario: [''],
     });
   }
 
@@ -168,9 +172,9 @@ export class CredencialCadastrarPage implements OnInit {
   }
 
   public onCreate() {
-    debugger
     if (this.credencialFormGroup.valid) {
       const credencialModel = this.configurarCredencialModel();
+      debugger
       this.credencialService.create(credencialModel).subscribe({
         next: async (response) => {
           this.apresentarToastSucesso();
@@ -207,6 +211,12 @@ export class CredencialCadastrarPage implements OnInit {
       descricao: this.credencialFormGroup.get('descricao')?.value,
       link: this.credencialFormGroup.get('link')?.value,
       observacao: this.credencialFormGroup.get('observacao')?.value,
+
+      databaseHostname: this.credencialFormGroup.get('databaseHostname')?.value,
+      databasePorta: this.credencialFormGroup.get('databasePorta')?.value,
+      databaseNome: this.credencialFormGroup.get('databaseNome')?.value,
+      databaseUsuario: this.credencialFormGroup.get('databaseUsuario')?.value,
+      
     };
   }
 
@@ -350,6 +360,21 @@ export class CredencialCadastrarPage implements OnInit {
         this.credencialFormGroup.get('identificador')?.clearValidators();
         this.credencialFormGroup.get('link')?.clearValidators();
         break;
+      case 6: // Banco de Dados
+        this.recuperarUsuarioLogado();
+        // Obrigatórios
+        this.credencialFormGroup.get('categoriaCredencialEntity')?.setValidators([Validators.required]);
+        this.credencialFormGroup.get('nomeInstituicao')?.setValidators([Validators.required]);
+        this.credencialFormGroup.get('descricao')?.setValidators([Validators.required]);
+        this.credencialFormGroup.get('databasehostname')?.setValidators([Validators.required]);
+        this.credencialFormGroup.get('databasename')?.setValidators([Validators.required]);
+        this.credencialFormGroup.get('databaseusername')?.setValidators([Validators.required]);
+        this.credencialFormGroup.get('databaseport')?.setValidators([Validators.required]);
+        this.credencialFormGroup.get('senha')?.setValidators([Validators.required]);
+        // Não obrigatórios
+        this.credencialFormGroup.get('identificador')?.clearValidators();
+        this.credencialFormGroup.get('link')?.clearValidators();
+        break;
       default:
         this.credencialFormGroup.get('nomeInstituicao')?.setValidators([Validators.required]);
         this.credencialFormGroup.get('identificador')?.setValidators([Validators.required]);
@@ -361,7 +386,6 @@ export class CredencialCadastrarPage implements OnInit {
     this.credencialFormGroup.get('descricao')?.updateValueAndValidity();
     this.credencialFormGroup.get('link')?.updateValueAndValidity();
     this.credencialFormGroup.get('senha')?.updateValueAndValidity();
-    this.credencialFormGroup.get('categoriaCredencialEntity')?.updateValueAndValidity();
     this.credencialFormGroup.get('pessoaID')?.updateValueAndValidity();
     this.credencialFormGroup.get('identificador')?.updateValueAndValidity();
     this.credencialFormGroup.get('observacao')?.updateValueAndValidity();
