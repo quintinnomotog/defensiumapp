@@ -7,6 +7,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import {
   IonAvatar,
   IonContent,
@@ -90,6 +91,8 @@ export class PrincipalPage implements OnInit {
   private numeroPagina: number = 0;
 
   private numeroResultadoPagina = 10;
+
+  private router = inject(Router);
 
   constructor() {
     addIcons({
@@ -275,6 +278,10 @@ export class PrincipalPage implements OnInit {
     g = Math.max(Math.min(255, g), 0);
     b = Math.max(Math.min(255, b), 0);
     return (usePound ? "#" : "") + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+  }
+
+  public redirecionarTelaCredencialEditar(codePublic: string) {
+    this.router.navigate(['/credencial-editar', codePublic]);
   }
 
 }

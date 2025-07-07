@@ -220,11 +220,17 @@
 // }
 
 #contas-recentes {
-    // border: dashed red 2px;
     ion-list {
         background: #fafafa;
         ion-item {
             --background: #fafafa;
+            ion-row {
+                cursor: pointer;
+                border-radius: 14px;
+            }
+            ion-row:hover {
+                border: solid #f2f2f2 2px;
+            }
         }
 
         .icone {

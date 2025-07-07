@@ -23,4 +23,8 @@ export const routes: Routes = [
     path: 'pessoa-cadastrar',
     loadComponent: () => import('./modal/pessoa-cadastrar/pessoa-cadastrar.page').then( m => m.PessoaCadastrarPage)
   },
+  {
+    path: 'credencial-editar/:codePublic',
+    loadComponent: () => import('./page/credencial-editar/credencial-editar.page').then( m => m.CredencialEditarPage)
+  },
 ];

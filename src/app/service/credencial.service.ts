@@ -35,4 +35,11 @@ export class CredencialService {
     return this.httpClient.post<any>(environment.url_api.concat(this.ENDPOINT.concat(this.ENDPOINT_DESCRIPTOGRAFAR)), codePublic);
   }
 
+  public findOne(codePublic: string): Observable<any> {
+    return this.httpClient.get<any>(environment.url_api
+      .concat(this.ENDPOINT)
+      .concat("/")
+      .concat(codePublic));
+  }
+
 }
