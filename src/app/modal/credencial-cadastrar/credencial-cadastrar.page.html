@@ -250,7 +250,8 @@
         <div 
           *ngIf="
             credencialFormGroup.get('categoriaCredencialEntity')?.value !== 8 && 
-            credencialFormGroup.get('categoriaCredencialEntity')?.value !== 5" 
+            credencialFormGroup.get('categoriaCredencialEntity')?.value !== 5 &&
+            credencialFormGroup.get('categoriaCredencialEntity')?.value !== 3" 
           class="formulario-input">
           <ion-label>Link</ion-label>
           <input type="text" placeholder="http://www.domain.com" maxlength="100" formControlName="link" [class.campo-invalido]="isCampoInvalido('link')"/>
